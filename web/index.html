@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#71004d">
+  <title>Selamat Ulang Tahun, CUWII BEBSKUYY! 🎂💜</title>
+  <meta name="description" content="Kejutan ulang tahun untuk CUWII BEBSKUYY, dibuat khusus dengan penuh sayang.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css?v=14">
+</head>
+<body>
+  <!-- Canvas Confetti & Sparkles -->
+  <canvas id="confetti-canvas"></canvas>
+  <div class="stars-container" id="stars-container"></div>
+  <div class="background-snoopy" aria-hidden="true">
+    <img src="img%20hiasan/snoopy%20pegang%20balon.png" alt="">
+  </div>
+  <div class="background-snoopy snoopy-floater snoopy-floater-two" aria-hidden="true">
+    <img src="img%20hiasan/snoopy%20pegang%20balon.png" alt="">
+  </div>
+  <div class="background-snoopy snoopy-floater snoopy-floater-three" aria-hidden="true">
+    <img src="img%20hiasan/snoopy%20pegang%20balon.png" alt="">
+  </div>
+  <div class="background-snoopy snoopy-floater snoopy-floater-four" aria-hidden="true">
+    <img src="img%20hiasan/snoopy%20pegang%20balon.png" alt="">
+  </div>
+
+  <!-- SURPRISE COVER OVERLAY (Landing Gate) -->
+  <div class="cover-overlay" id="cover-overlay">
+    <div class="cover-decorations" aria-hidden="true">
+      <div class="character-sticker cover-snoopy">
+        <img src="img%20hiasan/snoopy%20pegang%20balon.png" alt="">
+      </div>
+      <div class="character-sticker cover-bellingham">
+        <img src="img%20hiasan/bellingham.png" alt="">
+      </div>
+      <div class="character-sticker cover-shinchan">
+        <img src="img%20hiasan/sinchan.png" alt="">
+      </div>
+      <div class="character-sticker cover-angela">
+        <img src="img%20hiasan/my%20angela.png" alt="">
+      </div>
+      <div class="character-sticker cover-snoopy-line">
+        <img src="img%20hiasan/snoopy.png" alt="">
+      </div>
+      <div class="character-sticker cover-spidergwen">
+        <img src="img%20hiasan/spider%20gwen.png" alt="">
+      </div>
+      <div class="character-sticker cover-buttercup">
+        <img src="img%20hiasan/buttercup.png" alt="">
+      </div>
+      <div class="character-sticker cover-timmy">
+        <img src="img%20hiasan/timmy.webp" alt="">
+      </div>
+      <span class="party-balloon party-balloon-one"></span>
+      <span class="party-balloon party-balloon-two"></span>
+      <span class="party-balloon party-balloon-three"></span>
+      <span class="party-balloon party-balloon-four"></span>
+      <span class="party-sparkle party-sparkle-one">✦</span>
+      <span class="party-sparkle party-sparkle-two">✧</span>
+      <span class="party-sparkle party-sparkle-three">✦</span>
+    </div>
+
+    <div class="cover-card">
+      <div class="cover-badge">Kejutan Ulang Tahun 🎁</div>
+      <div class="cover-visible-hiasan" aria-hidden="true">
+        <img class="cover-visible-adudu" src="img%20hiasan/adudu.png" alt="">
+        <img class="cover-visible-jessie" src="img%20hiasan/jessie.png" alt="">
+        <img class="cover-visible-monsters" src="img%20hiasan/Monsters-University-PNG-Pic.png" alt="">
+        <img class="cover-visible-cawmario" src="img%20hiasan/cawmario.png" alt="">
+      </div>
+      <div class="gift-box" id="gift-box-trigger" role="button" tabindex="0" aria-label="Sentuh kado untuk membuka">
+        <div class="gift-ribbon-vertical"></div>
+        <div class="gift-ribbon-horizontal"></div>
+        <div class="gift-lid">
+          <div class="gift-bow"></div>
+        </div>
+        <div class="gift-body">
+          <span class="gift-sparkle">✨</span>
+        </div>
+      </div>
+      <h1 class="cover-title">Happy Birthday,<br><span class="cover-name" id="cover-name">CUWII BEBSKUYY</span></h1>
+      <p class="cover-subtitle">Dibuat khusus untuk hari spesialmu. Sentuh kado untuk membuka 🤍</p>
+      <button class="btn-open-gift" id="btn-open-gift" type="button" onclick="document.getElementById('btn-open-gift').classList.add('hidden'); document.querySelector('#cover-overlay .cover-subtitle').textContent='Jawab dulu pertanyaan kecil untuk membuka kejutan ini.'; document.getElementById('age-gate').classList.remove('hidden'); document.getElementById('age-answer').focus();">
+        <span>Buka Kado Sekarang</span>
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </button>
+      <form class="age-gate hidden" id="age-gate" novalidate onsubmit="return window.submitBirthdayAgeFallback(event, this)">
+        <label class="age-gate-label" for="age-answer">Umur Bebskuy berapa?</label>
+        <div class="age-gate-fields">
+          <input class="age-gate-input" id="age-answer" name="age-answer" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="3" placeholder="Tulis umur" required autocomplete="off">
+          <button class="age-gate-submit" type="submit">Jawab</button>
+        </div>
+        <p class="age-gate-feedback" id="age-feedback" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="main-wrapper" id="main-content">
+    <button class="back-to-menu hidden" id="back-to-menu" type="button" data-go-page="home">← Kembali ke menu</button>
+    
+    <!-- HERO SECTION -->
+    <section class="hero-section" data-page="home">
+      <div class="hero-tag">✨ Happy Birthday, Sayang ✨</div>
+      <h1 class="hero-title">Selamat Bertambah Usia, <span class="highlight-name" id="hero-name">CUWII BEBSKUYY</span> 💜</h1>
+      <p class="hero-subtitle">
+        Semoga di usiamu yang baru ini, langkahmu selalu dimudahkan, harimu dipenuhi kebahagiaan, dan segala impian baikmu terwujud satu per satu.
+      </p>
+
+      <div class="countdown-badge">
+        <span class="badge-icon">⏳</span>
+        <span id="birthday-greeting-note">Hari ini adalah harimu yang paling berharga!</span>
+      </div>
+
+      <div class="hero-photo-collage hero-photo-single" role="group" aria-label="Kenangan bersama">
+        <img class="hero-photo hero-photo-main" src="img/20260609_190133_RYmPRk.jpg" alt="Momen berdua di dalam ruangan" fetchpriority="high">
+        <span class="hero-photo-note">kenangan yang selalu kusimpan ✦</span>
+      </div>
+      <div class="hero-side-sticker hero-bellingham" aria-hidden="true">
+        <img src="img%20hiasan/bellingham.png" alt="">
+      </div>
+      <div class="hero-side-sticker hero-spidergwen" aria-hidden="true">
+        <img src="img%20hiasan/spider%20gwen.png" alt="">
+      </div>
+      <div class="hero-side-sticker hero-adudu" aria-hidden="true">
+        <img src="img%20hiasan/adudu.png" alt="">
+      </div>
+      <div class="hero-side-sticker hero-jessie" aria-hidden="true">
+        <img src="img%20hiasan/jessie.png" alt="">
+      </div>
+    </section>
+
+    <section class="surprise-menu" data-page="home">
+      <div class="home-menu-sticker home-monsters" aria-hidden="true">
+        <img src="img%20hiasan/Monsters-University-PNG-Pic.png" alt="">
+      </div>
+      <div class="home-menu-sticker home-cawmario" aria-hidden="true">
+        <img src="img%20hiasan/cawmario.png" alt="">
+      </div>
+      <div class="section-badge">kejutan spesial buat kamu</div>
+      <h2 class="surprise-menu-title">Choose the Surprise</h2>
+      <p class="surprise-menu-desc">Pilih satu untuk membuka bagian kejutan berikutnya.</p>
+      <div class="surprise-menu-grid">
+        <button class="surprise-option" type="button" data-go-page="journey">
+          <span class="surprise-icon" aria-hidden="true">📸</span>
+          <span class="surprise-label">Kenangan kamu sebelum menyentuh kepala 2</span>
+          <span class="surprise-hint">semua kenangan kita</span>
+        </button>
+        <button class="surprise-option" type="button" data-go-page="wish">
+          <span class="surprise-icon" aria-hidden="true">🕰️</span>
+          <span class="surprise-label">Make a Wish</span>
+          <span class="surprise-hint">tiup lilinmu</span>
+        </button>
+        <button class="surprise-option" type="button" data-go-page="music">
+          <span class="surprise-icon" aria-hidden="true">📀</span>
+          <span class="surprise-label">Play Music</span>
+          <span class="surprise-hint">lagu spesial untukmu</span>
+        </button>
+        <button class="surprise-option" type="button" data-go-page="letter">
+          <span class="surprise-icon" aria-hidden="true">🎁</span>
+          <span class="surprise-label">Open Your Letter</span>
+          <span class="surprise-hint">ada pesan buat kamu</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- SOUNDTRACK SECTION -->
+    <section class="music-section" data-page="music">
+      <div class="floating-ornament music-buttercup" aria-hidden="true">
+        <img src="img%20hiasan/buttercup.png" alt="">
+      </div>
+      <div class="music-card audio-player-card">
+        <div class="music-copy">
+          <div class="section-badge">Lagu untukmu 🎶</div>
+          <h2 class="section-title">Soundtrack Hari Spesialmu</h2>
+          <p class="section-desc">“A&amp;W” (Official Instrumental) — Lana Del Rey diputar sebagai musik latar kejutan ini.</p>
+        </div>
+
+        <div class="custom-audio-player">
+          <div class="player-vinyl-wrapper">
+            <div class="player-vinyl" id="player-vinyl">
+              <div class="vinyl-groove"></div>
+              <div class="vinyl-center">
+                <span>🎵</span>
+              </div>
+            </div>
+            <div class="player-track-info">
+              <span class="player-track-tag">Musik Latar Spesial</span>
+              <h3 class="player-track-title">A&amp;W (Official Instrumental)</h3>
+              <p class="player-artist">Lana Del Rey</p>
+              <span class="player-status-badge" id="player-status-badge">Sedang Diputar 🎧</span>
+            </div>
+          </div>
+
+          <div class="player-controls">
+            <div class="player-progress-area">
+              <span class="player-time" id="player-current-time">0:00</span>
+              <div class="player-timeline" id="player-timeline" role="slider" aria-label="Progress lagu" tabindex="0">
+                <div class="player-progress-bar" id="player-progress-bar">
+                  <div class="player-progress-thumb"></div>
+                </div>
+              </div>
+              <span class="player-time" id="player-duration">--:--</span>
+            </div>
+
+            <div class="player-buttons">
+              <button class="player-play-btn" id="player-play-btn" type="button" aria-label="Putar atau Jeda Musik">
+                <span class="play-icon" id="player-play-icon">⏸</span>
+                <span id="player-btn-label">Jeda Musik</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- INTERACTIVE CAKE & CANDLE SECTION -->
+    <section class="cake-section" data-page="wish">
+      <div class="floating-ornament cake-shinchan" aria-hidden="true">
+        <img src="img%20hiasan/sinchan.png" alt="">
+      </div>
+      <div class="floating-ornament cake-adudu" aria-hidden="true">
+        <img src="img%20hiasan/adudu.png" alt="">
+      </div>
+      <div class="section-card cake-card">
+        <div class="section-badge">Saatnya Membuat Harapan 🎂</div>
+        <h2 class="section-title">Tiup Lilinnya & Panjatkan Doa</h2>
+        <p class="section-desc">Pikirkan satu doa terindahmu di dalam hati, lalu sentuh api lilin di bawah ini untuk meniupnya 🕯️✨</p>
+
+        <div class="cake-interactive-container">
+          <div class="cake-image-wrapper cake-illustration" role="img" aria-label="Ilustrasi kue ulang tahun ungu dengan satu lilin menyala">
+            <div class="cake-plate" aria-hidden="true"></div>
+            <div class="cake-tier cake-tier-bottom" aria-hidden="true">
+              <span class="cake-sprinkles"></span>
+              <span class="cake-frosting"></span>
+            </div>
+            <div class="cake-tier cake-tier-top" aria-hidden="true">
+              <span class="cake-sprinkles"></span>
+              <span class="cake-frosting"></span>
+            </div>
+            <span class="cake-berry cake-berry-one" aria-hidden="true"></span>
+            <span class="cake-berry cake-berry-two" aria-hidden="true"></span>
+            <span class="cake-berry cake-berry-three" aria-hidden="true"></span>
+            <span class="cake-star cake-star-one" aria-hidden="true">✦</span>
+            <span class="cake-star cake-star-two" aria-hidden="true">✧</span>
+            <span class="cake-age hidden" id="cake-age" aria-hidden="true">20</span>
+
+            <!-- Interactive candle drawn over the cake illustration -->
+            <div class="virtual-candle" id="virtual-candle" title="Klik untuk tiup lilin" role="button" tabindex="0" aria-label="Tiup lilin" onclick="return window.blowBirthdayCandleFallback()" onkeydown="if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); window.blowBirthdayCandleFallback(); }">
+              <div class="candle-body"></div>
+              <div class="candle-wick"></div>
+              <div class="candle-flame" id="candle-flame">
+                <div class="flame-core"></div>
+                <div class="flame-glow"></div>
+              </div>
+              <div class="candle-smoke hidden" id="candle-smoke"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="candle-action-area">
+          <button class="btn-blow" id="btn-blow-candle" type="button" onclick="return window.blowBirthdayCandleFallback()">
+            <span class="btn-icon">💨</span>
+            <span id="blow-btn-text">Tiup Lilin Sekarang</span>
+          </button>
+          <div class="wish-reveal-box hidden" id="wish-reveal-box">
+            <div class="wish-number" aria-hidden="true">20</div>
+            <div class="wish-icon">🎉</div>
+            <h3 class="wish-title">Yeay! Lilin Berhasil Ditiup!</h3>
+            <p class="wish-text">"Semoga semua doa dan harapan baikmu yang dipanjatkan barusan didengar dan dikabulkan oleh semesta. Aamiin 🤍"</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIRTUAL ENVELOPE & LETTER SECTION -->
+    <section class="letter-section" data-page="letter">
+      <div class="floating-ornament letter-snoopy" aria-hidden="true">
+        <img src="img%20hiasan/snoopy.png" alt="">
+      </div>
+      <div class="floating-ornament letter-jessie" aria-hidden="true">
+        <img src="img%20hiasan/jessie.png" alt="">
+      </div>
+      <div class="section-badge">Pesan Spesial 💌</div>
+      <h2 class="section-title">Sepucuk Surat Buat Kamu</h2>
+      <p class="section-desc">Klik amplop di bawah ini untuk membaca suratnya.</p>
+
+      <div class="envelope-wrapper" id="envelope-wrapper">
+        <div class="envelope" id="envelope">
+          <div class="envelope-front">
+            <div class="envelope-flap" id="envelope-flap"></div>
+            <div class="envelope-pocket"></div>
+            <div class="wax-seal" id="wax-seal">
+              <span>🤍</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="letter-sheet" id="letter-sheet">
+          <div class="letter-header">
+            <span class="letter-date" id="letter-date">Spesial di Hari Ulang Tahunmu</span>
+            <span class="letter-pin">📌</span>
+          </div>
+          <div class="letter-content" id="letter-content">
+            <h3 class="letter-greeting">Selamat ulang tahun yang ke-20, sayang. ❤️</h3>
+            <p>
+              Selamat bertambah usia, semoga di umur yang baru ini kamu bisa menjadi pribadi yang semakin baik dari sebelumnya. Semoga di usia 20 tahun ini, pola pikirmu semakin dewasa, cara pandangmu terhadap kehidupan semakin luas, dan kamu semakin bijak dalam mengambil setiap keputusan. Semoga kamu juga bisa lebih memahami banyak hal, lebih mampu mengendalikan diri, dan tidak mudah menyerah ketika keadaan tidak berjalan sesuai dengan apa yang kamu harapkan. Karena semakin bertambahnya usia, pasti akan ada semakin banyak hal yang harus kamu hadapi, semakin banyak tanggung jawab yang perlu kamu jalani, dan semakin banyak pelajaran yang akan membuatmu tumbuh menjadi seseorang yang lebih kuat.
+            </p>
+            <p>
+              Aku juga berharap di umur 20 ini kamu bisa menjadi seseorang yang lebih sabar. Sabar dalam menghadapi keadaan, sabar ketika sesuatu tidak berjalan sesuai rencana, sabar menghadapi orang-orang dengan berbagai macam sifat, dan sabar dalam menjalani setiap proses kehidupan. Jangan terlalu terburu-buru ingin mendapatkan semuanya sekaligus. Tidak semua hal harus terjadi sekarang, tidak semua keinginan harus langsung terwujud, dan tidak semua masalah harus selalu mendapatkan jawaban hari ini. Ada waktunya kamu harus belajar menerima, memahami, dan mengikhlaskan sesuatu yang memang belum bisa kamu dapatkan. Kalau suatu saat keadaan membuatmu kecewa, jangan langsung menyerah. Kalau ada sesuatu yang membuatmu lelah, jangan merasa bahwa kamu tidak mampu. Belajarlah untuk tetap tenang, karena aku percaya setiap proses yang kamu jalani pasti akan memberikan sesuatu yang berharga untuk dirimu sendiri.
+            </p>
+            <p>
+              Untuk semua cita-cita dan keinginanmu, semoga satu per satu bisa segera tercapai. Semoga apa yang selama ini kamu impikan bukan hanya menjadi angan-angan, tetapi benar-benar bisa menjadi kenyataan. Semoga setiap langkah yang kamu ambil selalu diberikan kemudahan, setiap usaha yang kamu lakukan mendapatkan hasil yang baik, dan setiap doa yang kamu panjatkan bisa menemukan jalan terbaik untuk terwujud. Jangan pernah merasa tertinggal hanya karena melihat pencapaian orang lain. Setiap orang punya waktunya masing-masing, begitu juga dengan kamu. Teruslah berusaha, jangan mudah membandingkan perjalananmu dengan perjalanan orang lain, dan jangan pernah kehilangan semangat untuk mengejar apa yang kamu inginkan.
+            </p>
+            <p>
+              Untuk urusan kuliah, semoga kamu semakin rajin, semakin semangat, dan semakin bertanggung jawab dengan apa yang sedang kamu perjuangkan sekarang. Semoga segala tugas, perkuliahan, dan hal-hal yang terkadang membuatmu pusing bisa kamu lewati dengan baik. Kalau nanti ada masa ketika kuliah terasa berat, tugas semakin banyak, nilai tidak sesuai harapan, atau keadaan membuatmu kehilangan motivasi, jangan langsung berpikir untuk menyerah. Ingat bahwa ada tujuan yang sedang kamu perjuangkan dan ada orang tua yang berharap melihatmu berhasil. Semoga kamu bisa menyelesaikan pendidikanmu dengan hasil yang membanggakan dan bisa menjadi seseorang yang kelak mampu membanggakan keluarga melalui pencapaianmu sendiri.
+            </p>
+            <p>
+              Jangan lupa juga untuk selalu mengingat kedua orang tuamu. Semoga di umur yang semakin bertambah ini kamu bisa menjadi anak yang semakin berbakti, semakin menghargai perjuangan mereka, dan semakin memahami segala bentuk kasih sayang yang sudah mereka berikan. Mungkin tidak semua hal bisa langsung kamu balas sekarang, tetapi setidaknya teruslah berusaha menjadi anak yang baik dan tidak mengecewakan mereka. Semoga suatu saat nanti kamu bisa memberikan kebahagiaan yang lebih besar kepada kedua orang tuamu, melihat mereka tersenyum karena keberhasilanmu, dan membuat mereka bangga karena telah membesarkan seseorang yang mampu berjuang untuk masa depannya. Semoga mereka juga selalu diberikan kesehatan, umur panjang, dan kesempatan untuk menyaksikan semua keberhasilan yang nantinya kamu capai.
+            </p>
+            <p>
+              Dan satu hal lagi, dari aku sebagai pacarmu. Aku berharap di umurmu yang ke-20 ini kamu juga bisa menjadi pribadi yang lebih baik dalam menjalani hubungan kita. Semoga kamu semakin dewasa dalam memahami perasaan, semakin sabar ketika menghadapi perbedaan pendapat, dan semakin bijak ketika ada masalah di antara kita. Aku tahu hubungan tidak selalu berjalan dengan mudah. Akan ada saatnya kita berbeda pikiran, salah paham, merasa kecewa, atau mungkin sama-sama sedang berada dalam keadaan yang tidak baik. Namun, aku berharap kita bisa terus belajar memahami satu sama lain, bukan hanya ingin dimengerti tetapi juga mau mengerti. Jangan mudah membiarkan masalah kecil menjadi sesuatu yang besar. Belajarlah untuk saling mendengarkan, saling menghargai, dan saling memperbaiki diri.
+            </p>
+            <p>
+              Aku tidak berharap kamu menjadi seseorang yang sempurna, karena aku pun masih punya banyak kekurangan yang harus diperbaiki. Aku hanya berharap kita bisa sama-sama bertumbuh menjadi pribadi yang lebih baik. Aku ingin melihat kamu berhasil dengan semua impianmu, menyelesaikan apa yang sedang kamu perjuangkan, dan mendapatkan kehidupan yang selama ini kamu harapkan. Aku ingin menjadi seseorang yang bisa ikut mendukungmu ketika kamu sedang berusaha, memberikan semangat ketika kamu mulai lelah, dan menjadi tempat bercerita ketika ada banyak hal yang ingin kamu sampaikan. Semoga kita juga bisa terus saling menemani dalam proses masing-masing, bukan hanya hadir ketika semuanya menyenangkan, tetapi juga belajar bertahan dan memahami ketika keadaan sedang tidak baik-baik saja.
+            </p>
+            <p>
+              Terakhir, semoga di umur yang baru ini kamu lebih banyak menemukan kebahagiaan daripada kesedihan, lebih banyak mendapatkan kemudahan daripada kesulitan, dan lebih banyak alasan untuk bersyukur daripada mengeluh. Semoga hal-hal baik selalu datang menghampirimu, semoga kamu dijauhkan dari hal-hal yang tidak baik, dan semoga apa pun yang sedang kamu usahakan saat ini bisa berakhir dengan sesuatu yang membahagiakan. Kalau ada doa yang belum terkabul, semoga kamu diberikan kesabaran untuk menunggunya. Kalau ada keinginan yang belum tercapai, semoga kamu diberikan kekuatan untuk terus mengusahakannya.
+            </p>
+            <p>
+              Sekali lagi, selamat memasuki usia 20 tahun. Terima kasih sudah bertahan dan berjuang sampai sejauh ini. Jangan terlalu keras kepada diri sendiri, jangan lupa bahagia, jangan lupa beristirahat, dan jangan pernah berhenti percaya bahwa kamu bisa menjadi seseorang yang lebih baik dari hari kemarin.
+            </p>
+            <p>
+              Semoga 20 tahun ini menjadi awal dari banyak cerita indah, pencapaian besar, kebahagiaan, dan hal-hal baik lainnya dalam hidupmu. Aku berdoa semoga semua yang terbaik selalu menyertai setiap langkahmu. Happy birthday, sayang. Semoga panjang umur, sehat selalu, dilancarkan segala urusannya, dimudahkan rezekinya, dan semoga semua cita-cita serta harapanmu bisa segera terwujud. ❤️
+            </p>
+            <p class="letter-sign">
+              Dengan penuh sayang,<br>
+              <span class="sender-name" id="sender-name">Dari seseorang yang menyayangimu 🤍</span>
+            </p>
+          </div>
+      </div>
+    </section>
+
+    <!-- MEMORY COLLAGE -->
+    <section class="memory-section" data-page="home journey">
+      <div class="section-badge">Cerita Kita 📸</div>
+      <h2 class="section-title">Kenangan kamu sebelum menyentuh kepala 2</h2>
+      <p class="section-desc">Setiap foto menyimpan cerita kecil tentang perjalanan kita.</p>
+      <div class="memory-soundtrack">
+        <audio id="memory-soundtrack-audio" loop preload="none">
+          <source src="audio/Terbuang%20Dalam%20Waktu%20-%20Barasuara%20(Peaceful%20Piano).mp3" type="audio/mpeg">
+        </audio>
+        <button class="memory-music-toggle" id="memory-music-toggle" type="button" aria-label="Putar Terbuang Dalam Waktu oleh Barasuara" aria-pressed="false">
+          <span class="memory-music-icon" aria-hidden="true">&#9835;</span>
+          <span class="memory-music-copy">
+            <span class="memory-track-title">Terbuang Dalam Waktu</span>
+            <span class="memory-track-artist">Barasuara &middot; Peaceful Piano</span>
+          </span>
+          <span class="memory-music-state" id="memory-music-state" aria-hidden="true">PUTAR</span>
+        </button>
+      </div>
+      <div class="polaroid-grid" id="polaroid-grid" aria-label="Kolase foto kenangan">
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 01" data-caption="Kenangan 01" data-full="img/20260609_190133_RYmPRk.jpg">
+          <img src="img/collage/20260609_190133_RYmPRk.jpg.thumb.jpg" alt="Kenangan 01" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">01</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 02" data-caption="Kenangan 02" data-full="img/IMG_1449.jpeg">
+          <img src="img/collage/IMG_1449.jpeg.thumb.jpg" alt="Kenangan 02" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">02</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 03" data-caption="Kenangan 03" data-full="img/IMG_1459.jpeg">
+          <img src="img/collage/IMG_1459.jpeg.thumb.jpg" alt="Kenangan 03" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">03</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 04" data-caption="Kenangan 04" data-full="img/IMG_20220521_213241_828.jpg">
+          <img src="img/collage/IMG_20220521_213241_828.jpg.thumb.jpg" alt="Kenangan 04" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">04</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 05" data-caption="Kenangan 05" data-full="img/IMG_20220612_103448_739.jpg">
+          <img src="img/collage/IMG_20220612_103448_739.jpg.thumb.jpg" alt="Kenangan 05" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">05</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 06" data-caption="Kenangan 06" data-full="img/IMG_20260809_222331.jpg">
+          <img src="img/collage/IMG_20260809_222331.jpg.thumb.jpg" alt="Kenangan 06" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">06</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 07" data-caption="Kenangan 07" data-full="img/IMG_6798.JPG">
+          <img src="img/collage/IMG_6798.JPG.thumb.jpg" alt="Kenangan 07" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">07</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 08" data-caption="Kenangan 08" data-full="img/IMG-20220603-WA0049.jpg">
+          <img src="img/collage/IMG-20220603-WA0049.jpg.thumb.jpg" alt="Kenangan 08" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">08</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 09" data-caption="Kenangan 09" data-full="img/IMG-20240628-WA0024.jpg">
+          <img src="img/collage/IMG-20240628-WA0024.jpg.thumb.jpg" alt="Kenangan 09" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">09</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 10" data-caption="Kenangan 10" data-full="img/IMG-20240628-WA0026.jpg">
+          <img src="img/collage/IMG-20240628-WA0026.jpg.thumb.jpg" alt="Kenangan 10" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">10</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 11" data-caption="Kenangan 11" data-full="img/IMG-20240830-WA0013.jpg">
+          <img src="img/collage/IMG-20240830-WA0013.jpg.thumb.jpg" alt="Kenangan 11" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">11</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 12" data-caption="Kenangan 12" data-full="img/IMG-20241026-WA0013.jpg">
+          <img src="img/collage/IMG-20241026-WA0013.jpg.thumb.jpg" alt="Kenangan 12" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">12</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 13" data-caption="Kenangan 13" data-full="img/IMG-20241231-WA0002.jpg">
+          <img src="img/collage/IMG-20241231-WA0002.jpg.thumb.jpg" alt="Kenangan 13" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">13</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 14" data-caption="Kenangan 14" data-full="img/IMG-20241231-WA0004.jpg">
+          <img src="img/collage/IMG-20241231-WA0004.jpg.thumb.jpg" alt="Kenangan 14" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">14</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 15" data-caption="Kenangan 15" data-full="img/IMG-20250203-WA0003.jpg">
+          <img src="img/collage/IMG-20250203-WA0003.jpg.thumb.jpg" alt="Kenangan 15" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">15</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 16" data-caption="Kenangan 16" data-full="img/IMG-20250203-WA0019.jpg">
+          <img src="img/collage/IMG-20250203-WA0019.jpg.thumb.jpg" alt="Kenangan 16" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">16</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 17" data-caption="Kenangan 17" data-full="img/IMG-20250328-WA0058.jpg">
+          <img src="img/collage/IMG-20250328-WA0058.jpg.thumb.jpg" alt="Kenangan 17" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">17</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 18" data-caption="Kenangan 18" data-full="img/IMG-20250529-WA0052.jpg">
+          <img src="img/collage/IMG-20250529-WA0052.jpg.thumb.jpg" alt="Kenangan 18" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">18</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 19" data-caption="Kenangan 19" data-full="img/IMG-20250602-WA0006.jpg">
+          <img src="img/collage/IMG-20250602-WA0006.jpg.thumb.jpg" alt="Kenangan 19" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">19</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 20" data-caption="Kenangan 20" data-full="img/IMG-20250602-WA0025.jpg">
+          <img src="img/collage/IMG-20250602-WA0025.jpg.thumb.jpg" alt="Kenangan 20" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">20</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 21" data-caption="Kenangan 21" data-full="img/IMG-20250602-WA0035.jpg">
+          <img src="img/collage/IMG-20250602-WA0035.jpg.thumb.jpg" alt="Kenangan 21" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">21</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 22" data-caption="Kenangan 22" data-full="img/IMG-20250630-WA0013.jpg">
+          <img src="img/collage/IMG-20250630-WA0013.jpg.thumb.jpg" alt="Kenangan 22" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">22</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 23" data-caption="Kenangan 23" data-full="img/IMG-20250806-WA0054.jpg">
+          <img src="img/collage/IMG-20250806-WA0054.jpg.thumb.jpg" alt="Kenangan 23" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">23</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 24" data-caption="Kenangan 24" data-full="img/IMG-20250811-WA0032.jpg">
+          <img src="img/collage/IMG-20250811-WA0032.jpg.thumb.jpg" alt="Kenangan 24" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">24</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 25" data-caption="Kenangan 25" data-full="img/IMG-20250827-WA0069.jpg">
+          <img src="img/collage/IMG-20250827-WA0069.jpg.thumb.jpg" alt="Kenangan 25" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">25</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 26" data-caption="Kenangan 26" data-full="img/IMG-20250831-WA0130.jpg">
+          <img src="img/collage/IMG-20250831-WA0130.jpg.thumb.jpg" alt="Kenangan 26" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">26</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 27" data-caption="Kenangan 27" data-full="img/IMG-20250911-WA0014.jpg">
+          <img src="img/collage/IMG-20250911-WA0014.jpg.thumb.jpg" alt="Kenangan 27" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">27</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 28" data-caption="Kenangan 28" data-full="img/IMG-20250912-WA0044.jpg">
+          <img src="img/collage/IMG-20250912-WA0044.jpg.thumb.jpg" alt="Kenangan 28" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">28</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 29" data-caption="Kenangan 29" data-full="img/IMG-20251130-WA0021.jpg">
+          <img src="img/collage/IMG-20251130-WA0021.jpg.thumb.jpg" alt="Kenangan 29" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">29</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 30" data-caption="Kenangan 30" data-full="img/IMG-20251220-WA0000.jpg">
+          <img src="img/collage/IMG-20251220-WA0000.jpg.thumb.jpg" alt="Kenangan 30" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">30</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 31" data-caption="Kenangan 31" data-full="img/IMG-20251220-WA0001.jpg">
+          <img src="img/collage/IMG-20251220-WA0001.jpg.thumb.jpg" alt="Kenangan 31" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">31</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 32" data-caption="Kenangan 32" data-full="img/IMG-20251220-WA0002.jpg">
+          <img src="img/collage/IMG-20251220-WA0002.jpg.thumb.jpg" alt="Kenangan 32" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">32</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 33" data-caption="Kenangan 33" data-full="img/IMG-20251220-WA0007.jpg">
+          <img src="img/collage/IMG-20251220-WA0007.jpg.thumb.jpg" alt="Kenangan 33" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">33</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 34" data-caption="Kenangan 34" data-full="img/IMG-20251220-WA0008.jpg">
+          <img src="img/collage/IMG-20251220-WA0008.jpg.thumb.jpg" alt="Kenangan 34" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">34</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 35" data-caption="Kenangan 35" data-full="img/IMG-20251220-WA0011.jpg">
+          <img src="img/collage/IMG-20251220-WA0011.jpg.thumb.jpg" alt="Kenangan 35" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">35</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 36" data-caption="Kenangan 36" data-full="img/IMG-20251221-WA0014.jpg">
+          <img src="img/collage/IMG-20251221-WA0014.jpg.thumb.jpg" alt="Kenangan 36" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">36</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 37" data-caption="Kenangan 37" data-full="img/IMG-20251221-WA0015.jpg">
+          <img src="img/collage/IMG-20251221-WA0015.jpg.thumb.jpg" alt="Kenangan 37" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">37</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 38" data-caption="Kenangan 38" data-full="img/IMG-20251221-WA0016.jpg">
+          <img src="img/collage/IMG-20251221-WA0016.jpg.thumb.jpg" alt="Kenangan 38" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">38</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 39" data-caption="Kenangan 39" data-full="img/IMG-20251221-WA0017.jpg">
+          <img src="img/collage/IMG-20251221-WA0017.jpg.thumb.jpg" alt="Kenangan 39" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">39</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 40" data-caption="Kenangan 40" data-full="img/IMG-20251221-WA0020.jpg">
+          <img src="img/collage/IMG-20251221-WA0020.jpg.thumb.jpg" alt="Kenangan 40" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">40</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 41" data-caption="Kenangan 41" data-full="img/IMG-20251221-WA0023.jpg">
+          <img src="img/collage/IMG-20251221-WA0023.jpg.thumb.jpg" alt="Kenangan 41" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">41</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 42" data-caption="Kenangan 42" data-full="img/IMG-20260223-WA0001.jpg">
+          <img src="img/collage/IMG-20260223-WA0001.jpg.thumb.jpg" alt="Kenangan 42" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">42</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 43" data-caption="Kenangan 43" data-full="img/IMG-20260327-WA0034.jpg">
+          <img src="img/collage/IMG-20260327-WA0034.jpg.thumb.jpg" alt="Kenangan 43" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">43</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 44" data-caption="Kenangan 44" data-full="img/IMG-20260327-WA0054.jpg">
+          <img src="img/collage/IMG-20260327-WA0054.jpg.thumb.jpg" alt="Kenangan 44" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">44</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 45" data-caption="Kenangan 45" data-full="img/IMG-20260615-WA0052.jpg">
+          <img src="img/collage/IMG-20260615-WA0052.jpg.thumb.jpg" alt="Kenangan 45" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">45</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 46" data-caption="Kenangan 46" data-full="img/IMG-20260621-WA0008.jpg">
+          <img src="img/collage/IMG-20260621-WA0008.jpg.thumb.jpg" alt="Kenangan 46" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">46</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 47" data-caption="Kenangan 47" data-full="img/IMG-20260621-WA0044.jpg">
+          <img src="img/collage/IMG-20260621-WA0044.jpg.thumb.jpg" alt="Kenangan 47" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">47</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 48" data-caption="Kenangan 48" data-full="img/IMG-20260621-WA0045.jpg">
+          <img src="img/collage/IMG-20260621-WA0045.jpg.thumb.jpg" alt="Kenangan 48" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">48</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 49" data-caption="Kenangan 49" data-full="img/IMG-20260802-WA0021.jpg">
+          <img src="img/collage/IMG-20260802-WA0021.jpg.thumb.jpg" alt="Kenangan 49" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">49</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 50" data-caption="Kenangan 50" data-full="img/IMG-20260816-WA0051.jpg">
+          <img src="img/collage/IMG-20260816-WA0051.jpg.thumb.jpg" alt="Kenangan 50" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">50</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 51" data-caption="Kenangan 51" data-full="img/IMG-20260818-WA0049.jpg">
+          <img src="img/collage/IMG-20260818-WA0049.jpg.thumb.jpg" alt="Kenangan 51" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">51</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 52" data-caption="Kenangan 52" data-full="img/IMG-20260909-WA0012.jpg">
+          <img src="img/collage/IMG-20260909-WA0012.jpg.thumb.jpg" alt="Kenangan 52" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">52</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 53" data-caption="Kenangan 53" data-full="img/PXL_20250426_155734338.jpg">
+          <img src="img/collage/PXL_20250426_155734338.jpg.thumb.jpg" alt="Kenangan 53" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">53</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 54" data-caption="Kenangan 54" data-full="img/IMG_0284.JPG">
+          <img src="img/collage/IMG_0284.JPG.thumb.jpg" alt="Kenangan 54" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">54</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 55" data-caption="Kenangan 55" data-full="img/IMG_0435.jpg">
+          <img src="img/collage/IMG_0435.jpg.thumb.jpg" alt="Kenangan 55" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">55</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 56" data-caption="Kenangan 56" data-full="img/IMG_0438.jpg">
+          <img src="img/collage/IMG_0438.jpg.thumb.jpg" alt="Kenangan 56" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">56</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 57" data-caption="Kenangan 57" data-full="img/IMG_0641.jpg">
+          <img src="img/collage/IMG_0641.jpg.thumb.jpg" alt="Kenangan 57" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">57</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 58" data-caption="Kenangan 58" data-full="img/IMG_0726.jpg">
+          <img src="img/collage/IMG_0726.jpg.thumb.jpg" alt="Kenangan 58" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">58</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 59" data-caption="Kenangan 59" data-full="img/IMG_0799.jpg">
+          <img src="img/collage/IMG_0799.jpg.thumb.jpg" alt="Kenangan 59" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">59</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 60" data-caption="Kenangan 60" data-full="img/IMG_0807.jpg">
+          <img src="img/collage/IMG_0807.jpg.thumb.jpg" alt="Kenangan 60" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">60</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 61" data-caption="Kenangan 61" data-full="img/IMG_0823.jpg">
+          <img src="img/collage/IMG_0823.jpg.thumb.jpg" alt="Kenangan 61" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">61</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 62" data-caption="Kenangan 62" data-full="img/IMG_1166.jpg">
+          <img src="img/collage/IMG_1166.jpg.thumb.jpg" alt="Kenangan 62" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">62</span>
+        </button>
+
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 63" data-caption="Kenangan 63" data-full="img/20240328_110129.jpg">
+          <img src="img/collage/20240328_110129.jpg.thumb.jpg" alt="Kenangan 63" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">63</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 64" data-caption="Kenangan 64" data-full="img/20260609_190131_composite-YMHlcR.jpg">
+          <img src="img/collage/20260609_190131_composite-YMHlcR.jpg.thumb.jpg" alt="Kenangan 64" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">64</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 65" data-caption="Kenangan 65" data-full="img/IMG_20220116_124056.JPG">
+          <img src="img/collage/IMG_20220116_124056.JPG.thumb.jpg" alt="Kenangan 65" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">65</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 66" data-caption="Kenangan 66" data-full="img/IMG_20220120_220800_800.jpg">
+          <img src="img/collage/IMG_20220120_220800_800.jpg.thumb.jpg" alt="Kenangan 66" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">66</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 67" data-caption="Kenangan 67" data-full="img/IMG_20220324_182532_054.jpg">
+          <img src="img/collage/IMG_20220324_182532_054.jpg.thumb.jpg" alt="Kenangan 67" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">67</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 68" data-caption="Kenangan 68" data-full="img/IMG_20220404_063240_540.jpg">
+          <img src="img/collage/IMG_20220404_063240_540.jpg.thumb.jpg" alt="Kenangan 68" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">68</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 69" data-caption="Kenangan 69" data-full="img/IMG_20220422_112323_375.jpg">
+          <img src="img/collage/IMG_20220422_112323_375.jpg.thumb.jpg" alt="Kenangan 69" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">69</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 70" data-caption="Kenangan 70" data-full="img/IMG_20220529_141718.JPG">
+          <img src="img/collage/IMG_20220529_141718.JPG.thumb.jpg" alt="Kenangan 70" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">70</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 71" data-caption="Kenangan 71" data-full="img/IMG_20220611_213813.jpg">
+          <img src="img/collage/IMG_20220611_213813.jpg.thumb.jpg" alt="Kenangan 71" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">71</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 72" data-caption="Kenangan 72" data-full="img/IMG_20221010_164423_092%281%29.jpg">
+          <img src="img/collage/IMG_20221010_164423_092%281%29.jpg.thumb.jpg" alt="Kenangan 72" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">72</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 73" data-caption="Kenangan 73" data-full="img/IMG_20221020_171646_238%281%29.jpg">
+          <img src="img/collage/IMG_20221020_171646_238%281%29.jpg.thumb.jpg" alt="Kenangan 73" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">73</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 74" data-caption="Kenangan 74" data-full="img/IMG_20221101_191214.jpg">
+          <img src="img/collage/IMG_20221101_191214.jpg.thumb.jpg" alt="Kenangan 74" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">74</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 75" data-caption="Kenangan 75" data-full="img/IMG_20230108_124754.jpg">
+          <img src="img/collage/IMG_20230108_124754.jpg.thumb.jpg" alt="Kenangan 75" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">75</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 76" data-caption="Kenangan 76" data-full="img/IMG_20240519_154002_511.jpg">
+          <img src="img/collage/IMG_20240519_154002_511.jpg.thumb.jpg" alt="Kenangan 76" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">76</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 77" data-caption="Kenangan 77" data-full="img/IMG_20250101_002312_909.jpg">
+          <img src="img/collage/IMG_20250101_002312_909.jpg.thumb.jpg" alt="Kenangan 77" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">77</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 78" data-caption="Kenangan 78" data-full="img/IMG_20250410_132510.jpg">
+          <img src="img/collage/IMG_20250410_132510.jpg.thumb.jpg" alt="Kenangan 78" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">78</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 79" data-caption="Kenangan 79" data-full="img/IMG_20260826_123053.jpg">
+          <img src="img/collage/IMG_20260826_123053.jpg.thumb.jpg" alt="Kenangan 79" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">79</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 80" data-caption="Kenangan 80" data-full="img/IMG-20211224-WA0060.jpg">
+          <img src="img/collage/IMG-20211224-WA0060.jpg.thumb.jpg" alt="Kenangan 80" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">80</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 81" data-caption="Kenangan 81" data-full="img/IMG-20211230-WA0050.jpg">
+          <img src="img/collage/IMG-20211230-WA0050.jpg.thumb.jpg" alt="Kenangan 81" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">81</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 82" data-caption="Kenangan 82" data-full="img/IMG-20220113-WA0187.jpg">
+          <img src="img/collage/IMG-20220113-WA0187.jpg.thumb.jpg" alt="Kenangan 82" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">82</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 83" data-caption="Kenangan 83" data-full="img/IMG-20220215-WA0012.jpg">
+          <img src="img/collage/IMG-20220215-WA0012.jpg.thumb.jpg" alt="Kenangan 83" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">83</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 84" data-caption="Kenangan 84" data-full="img/IMG-20220215-WA0036.jpg">
+          <img src="img/collage/IMG-20220215-WA0036.jpg.thumb.jpg" alt="Kenangan 84" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">84</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 85" data-caption="Kenangan 85" data-full="img/IMG-20220215-WA0037.jpg">
+          <img src="img/collage/IMG-20220215-WA0037.jpg.thumb.jpg" alt="Kenangan 85" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">85</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 86" data-caption="Kenangan 86" data-full="img/IMG-20220220-WA0000.jpg">
+          <img src="img/collage/IMG-20220220-WA0000.jpg.thumb.jpg" alt="Kenangan 86" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">86</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 87" data-caption="Kenangan 87" data-full="img/IMG-20220224-WA0021.jpg">
+          <img src="img/collage/IMG-20220224-WA0021.jpg.thumb.jpg" alt="Kenangan 87" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">87</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 88" data-caption="Kenangan 88" data-full="img/IMG-20220225-WA0101.jpg">
+          <img src="img/collage/IMG-20220225-WA0101.jpg.thumb.jpg" alt="Kenangan 88" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">88</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 89" data-caption="Kenangan 89" data-full="img/IMG-20220225-WA0177.jpg">
+          <img src="img/collage/IMG-20220225-WA0177.jpg.thumb.jpg" alt="Kenangan 89" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">89</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 90" data-caption="Kenangan 90" data-full="img/IMG-20220302-WA0057.jpg">
+          <img src="img/collage/IMG-20220302-WA0057.jpg.thumb.jpg" alt="Kenangan 90" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">90</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 91" data-caption="Kenangan 91" data-full="img/IMG-20220302-WA0058.jpg">
+          <img src="img/collage/IMG-20220302-WA0058.jpg.thumb.jpg" alt="Kenangan 91" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">91</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 92" data-caption="Kenangan 92" data-full="img/IMG-20220302-WA0068.jpg">
+          <img src="img/collage/IMG-20220302-WA0068.jpg.thumb.jpg" alt="Kenangan 92" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">92</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 93" data-caption="Kenangan 93" data-full="img/IMG-20220308-WA0040.jpg">
+          <img src="img/collage/IMG-20220308-WA0040.jpg.thumb.jpg" alt="Kenangan 93" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">93</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 94" data-caption="Kenangan 94" data-full="img/IMG-20220308-WA0051.jpg">
+          <img src="img/collage/IMG-20220308-WA0051.jpg.thumb.jpg" alt="Kenangan 94" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">94</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 95" data-caption="Kenangan 95" data-full="img/IMG-20220318-WA0053.jpg">
+          <img src="img/collage/IMG-20220318-WA0053.jpg.thumb.jpg" alt="Kenangan 95" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">95</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 96" data-caption="Kenangan 96" data-full="img/IMG-20220325-WA0038.jpg">
+          <img src="img/collage/IMG-20220325-WA0038.jpg.thumb.jpg" alt="Kenangan 96" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">96</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 97" data-caption="Kenangan 97" data-full="img/IMG-20220328-WA0109.jpg">
+          <img src="img/collage/IMG-20220328-WA0109.jpg.thumb.jpg" alt="Kenangan 97" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">97</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 98" data-caption="Kenangan 98" data-full="img/IMG-20220329-WA0062.jpg">
+          <img src="img/collage/IMG-20220329-WA0062.jpg.thumb.jpg" alt="Kenangan 98" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">98</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 99" data-caption="Kenangan 99" data-full="img/IMG-20220331-WA0095.jpg">
+          <img src="img/collage/IMG-20220331-WA0095.jpg.thumb.jpg" alt="Kenangan 99" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">99</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 100" data-caption="Kenangan 100" data-full="img/IMG-20220402-WA0134.jpg">
+          <img src="img/collage/IMG-20220402-WA0134.jpg.thumb.jpg" alt="Kenangan 100" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">100</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 101" data-caption="Kenangan 101" data-full="img/IMG-20220408-WA0074.jpg">
+          <img src="img/collage/IMG-20220408-WA0074.jpg.thumb.jpg" alt="Kenangan 101" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">101</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 102" data-caption="Kenangan 102" data-full="img/IMG-20220524-WA0046.jpg">
+          <img src="img/collage/IMG-20220524-WA0046.jpg.thumb.jpg" alt="Kenangan 102" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">102</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 103" data-caption="Kenangan 103" data-full="img/IMG-20220917-WA0009%281%29.jpg">
+          <img src="img/collage/IMG-20220917-WA0009%281%29.jpg.thumb.jpg" alt="Kenangan 103" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">103</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 104" data-caption="Kenangan 104" data-full="img/IMG-20220917-WA0011%281%29.jpg">
+          <img src="img/collage/IMG-20220917-WA0011%281%29.jpg.thumb.jpg" alt="Kenangan 104" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">104</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 105" data-caption="Kenangan 105" data-full="img/IMG-20221019-WA0018%281%29.jpg">
+          <img src="img/collage/IMG-20221019-WA0018%281%29.jpg.thumb.jpg" alt="Kenangan 105" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">105</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 106" data-caption="Kenangan 106" data-full="img/IMG-20221019-WA0033%281%29.jpg">
+          <img src="img/collage/IMG-20221019-WA0033%281%29.jpg.thumb.jpg" alt="Kenangan 106" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">106</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 107" data-caption="Kenangan 107" data-full="img/IMG-20221021-WA0058.jpg">
+          <img src="img/collage/IMG-20221021-WA0058.jpg.thumb.jpg" alt="Kenangan 107" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">107</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 108" data-caption="Kenangan 108" data-full="img/IMG-20221021-WA0061%281%29.jpg">
+          <img src="img/collage/IMG-20221021-WA0061%281%29.jpg.thumb.jpg" alt="Kenangan 108" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">108</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 109" data-caption="Kenangan 109" data-full="img/IMG-20221029-WA0005%281%29.jpg">
+          <img src="img/collage/IMG-20221029-WA0005%281%29.jpg.thumb.jpg" alt="Kenangan 109" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">109</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 110" data-caption="Kenangan 110" data-full="img/IMG-20221029-WA0076%281%29.jpg">
+          <img src="img/collage/IMG-20221029-WA0076%281%29.jpg.thumb.jpg" alt="Kenangan 110" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">110</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 111" data-caption="Kenangan 111" data-full="img/IMG-20221030-WA0011%281%29.jpg">
+          <img src="img/collage/IMG-20221030-WA0011%281%29.jpg.thumb.jpg" alt="Kenangan 111" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">111</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 112" data-caption="Kenangan 112" data-full="img/IMG-20221030-WA0014%281%29.jpg">
+          <img src="img/collage/IMG-20221030-WA0014%281%29.jpg.thumb.jpg" alt="Kenangan 112" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">112</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 113" data-caption="Kenangan 113" data-full="img/IMG-20221031-WA0097%281%29.jpg">
+          <img src="img/collage/IMG-20221031-WA0097%281%29.jpg.thumb.jpg" alt="Kenangan 113" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">113</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 114" data-caption="Kenangan 114" data-full="img/IMG-20221115-WA0026%281%29.jpg">
+          <img src="img/collage/IMG-20221115-WA0026%281%29.jpg.thumb.jpg" alt="Kenangan 114" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">114</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 115" data-caption="Kenangan 115" data-full="img/IMG-20221115-WA0049%281%29.jpg">
+          <img src="img/collage/IMG-20221115-WA0049%281%29.jpg.thumb.jpg" alt="Kenangan 115" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">115</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 116" data-caption="Kenangan 116" data-full="img/IMG-20221115-WA0051.jpg">
+          <img src="img/collage/IMG-20221115-WA0051.jpg.thumb.jpg" alt="Kenangan 116" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">116</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 117" data-caption="Kenangan 117" data-full="img/IMG-20221202-WA0046.jpg">
+          <img src="img/collage/IMG-20221202-WA0046.jpg.thumb.jpg" alt="Kenangan 117" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">117</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 118" data-caption="Kenangan 118" data-full="img/IMG-20221203-WA0100.jpg">
+          <img src="img/collage/IMG-20221203-WA0100.jpg.thumb.jpg" alt="Kenangan 118" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">118</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 119" data-caption="Kenangan 119" data-full="img/IMG-20221226-WA0005.jpg">
+          <img src="img/collage/IMG-20221226-WA0005.jpg.thumb.jpg" alt="Kenangan 119" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">119</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 120" data-caption="Kenangan 120" data-full="img/IMG-20230103-WA0038.jpg">
+          <img src="img/collage/IMG-20230103-WA0038.jpg.thumb.jpg" alt="Kenangan 120" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">120</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 121" data-caption="Kenangan 121" data-full="img/IMG-20230103-WA0051.jpg">
+          <img src="img/collage/IMG-20230103-WA0051.jpg.thumb.jpg" alt="Kenangan 121" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">121</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 122" data-caption="Kenangan 122" data-full="img/IMG-20230123-WA0027.jpg">
+          <img src="img/collage/IMG-20230123-WA0027.jpg.thumb.jpg" alt="Kenangan 122" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">122</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 123" data-caption="Kenangan 123" data-full="img/IMG-20230204-WA0023.jpg">
+          <img src="img/collage/IMG-20230204-WA0023.jpg.thumb.jpg" alt="Kenangan 123" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">123</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 124" data-caption="Kenangan 124" data-full="img/IMG-20230204-WA0027.jpg">
+          <img src="img/collage/IMG-20230204-WA0027.jpg.thumb.jpg" alt="Kenangan 124" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">124</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 125" data-caption="Kenangan 125" data-full="img/IMG-20230220-WA0025.jpg">
+          <img src="img/collage/IMG-20230220-WA0025.jpg.thumb.jpg" alt="Kenangan 125" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">125</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 126" data-caption="Kenangan 126" data-full="img/IMG-20230226-WA0033.jpg">
+          <img src="img/collage/IMG-20230226-WA0033.jpg.thumb.jpg" alt="Kenangan 126" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">126</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 127" data-caption="Kenangan 127" data-full="img/IMG-20230304-WA0014.jpg">
+          <img src="img/collage/IMG-20230304-WA0014.jpg.thumb.jpg" alt="Kenangan 127" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">127</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 128" data-caption="Kenangan 128" data-full="img/IMG-20230322-WA0036.jpg">
+          <img src="img/collage/IMG-20230322-WA0036.jpg.thumb.jpg" alt="Kenangan 128" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">128</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 129" data-caption="Kenangan 129" data-full="img/IMG-20230322-WA0053.jpg">
+          <img src="img/collage/IMG-20230322-WA0053.jpg.thumb.jpg" alt="Kenangan 129" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">129</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 130" data-caption="Kenangan 130" data-full="img/IMG-20230322-WA0088.jpg">
+          <img src="img/collage/IMG-20230322-WA0088.jpg.thumb.jpg" alt="Kenangan 130" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">130</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 131" data-caption="Kenangan 131" data-full="img/IMG-20230422-WA0077.jpg">
+          <img src="img/collage/IMG-20230422-WA0077.jpg.thumb.jpg" alt="Kenangan 131" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">131</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 132" data-caption="Kenangan 132" data-full="img/IMG-20230424-WA0041.jpg">
+          <img src="img/collage/IMG-20230424-WA0041.jpg.thumb.jpg" alt="Kenangan 132" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">132</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 133" data-caption="Kenangan 133" data-full="img/IMG-20230428-WA0055.jpg">
+          <img src="img/collage/IMG-20230428-WA0055.jpg.thumb.jpg" alt="Kenangan 133" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">133</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 134" data-caption="Kenangan 134" data-full="img/IMG-20230430-WA0021.jpg">
+          <img src="img/collage/IMG-20230430-WA0021.jpg.thumb.jpg" alt="Kenangan 134" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">134</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 135" data-caption="Kenangan 135" data-full="img/IMG-20230521-WA0070.jpg">
+          <img src="img/collage/IMG-20230521-WA0070.jpg.thumb.jpg" alt="Kenangan 135" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">135</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 136" data-caption="Kenangan 136" data-full="img/IMG-20230521-WA0078.jpg">
+          <img src="img/collage/IMG-20230521-WA0078.jpg.thumb.jpg" alt="Kenangan 136" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">136</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 137" data-caption="Kenangan 137" data-full="img/IMG-20230616-WA0044.jpg">
+          <img src="img/collage/IMG-20230616-WA0044.jpg.thumb.jpg" alt="Kenangan 137" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">137</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 138" data-caption="Kenangan 138" data-full="img/IMG-20230616-WA0063.jpg">
+          <img src="img/collage/IMG-20230616-WA0063.jpg.thumb.jpg" alt="Kenangan 138" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">138</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 139" data-caption="Kenangan 139" data-full="img/IMG-20230617-WA0065.jpg">
+          <img src="img/collage/IMG-20230617-WA0065.jpg.thumb.jpg" alt="Kenangan 139" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">139</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 140" data-caption="Kenangan 140" data-full="img/IMG-20231112-WA0025.jpg">
+          <img src="img/collage/IMG-20231112-WA0025.jpg.thumb.jpg" alt="Kenangan 140" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">140</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 141" data-caption="Kenangan 141" data-full="img/IMG-20231119-WA0005.jpg">
+          <img src="img/collage/IMG-20231119-WA0005.jpg.thumb.jpg" alt="Kenangan 141" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">141</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 142" data-caption="Kenangan 142" data-full="img/IMG-20240126-WA0018.jpg">
+          <img src="img/collage/IMG-20240126-WA0018.jpg.thumb.jpg" alt="Kenangan 142" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">142</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 143" data-caption="Kenangan 143" data-full="img/IMG-20240210-WA0007.jpg">
+          <img src="img/collage/IMG-20240210-WA0007.jpg.thumb.jpg" alt="Kenangan 143" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">143</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 144" data-caption="Kenangan 144" data-full="img/IMG-20240324-WA0011.jpg">
+          <img src="img/collage/IMG-20240324-WA0011.jpg.thumb.jpg" alt="Kenangan 144" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">144</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 145" data-caption="Kenangan 145" data-full="img/IMG-20240418-WA0025.jpg">
+          <img src="img/collage/IMG-20240418-WA0025.jpg.thumb.jpg" alt="Kenangan 145" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">145</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 146" data-caption="Kenangan 146" data-full="img/IMG-20240418-WA0034.jpg">
+          <img src="img/collage/IMG-20240418-WA0034.jpg.thumb.jpg" alt="Kenangan 146" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">146</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 147" data-caption="Kenangan 147" data-full="img/IMG-20240422-WA0024.jpg">
+          <img src="img/collage/IMG-20240422-WA0024.jpg.thumb.jpg" alt="Kenangan 147" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">147</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 148" data-caption="Kenangan 148" data-full="img/IMG-20240622-WA0005.jpg">
+          <img src="img/collage/IMG-20240622-WA0005.jpg.thumb.jpg" alt="Kenangan 148" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">148</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 149" data-caption="Kenangan 149" data-full="img/IMG-20240623-WA0022.jpg">
+          <img src="img/collage/IMG-20240623-WA0022.jpg.thumb.jpg" alt="Kenangan 149" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">149</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 150" data-caption="Kenangan 150" data-full="img/IMG-20240628-WA0030.jpg">
+          <img src="img/collage/IMG-20240628-WA0030.jpg.thumb.jpg" alt="Kenangan 150" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">150</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 151" data-caption="Kenangan 151" data-full="img/IMG-20240629-WA0000.jpg">
+          <img src="img/collage/IMG-20240629-WA0000.jpg.thumb.jpg" alt="Kenangan 151" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">151</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 152" data-caption="Kenangan 152" data-full="img/IMG-20240816-WA0110.jpg">
+          <img src="img/collage/IMG-20240816-WA0110.jpg.thumb.jpg" alt="Kenangan 152" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">152</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 153" data-caption="Kenangan 153" data-full="img/IMG-20240816-WA0111.jpg">
+          <img src="img/collage/IMG-20240816-WA0111.jpg.thumb.jpg" alt="Kenangan 153" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">153</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 154" data-caption="Kenangan 154" data-full="img/IMG-20240826-WA0006.jpg">
+          <img src="img/collage/IMG-20240826-WA0006.jpg.thumb.jpg" alt="Kenangan 154" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">154</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 155" data-caption="Kenangan 155" data-full="img/IMG-20240830-WA0020.jpg">
+          <img src="img/collage/IMG-20240830-WA0020.jpg.thumb.jpg" alt="Kenangan 155" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">155</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 156" data-caption="Kenangan 156" data-full="img/IMG-20240902-WA0034.jpg">
+          <img src="img/collage/IMG-20240902-WA0034.jpg.thumb.jpg" alt="Kenangan 156" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">156</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 157" data-caption="Kenangan 157" data-full="img/IMG-20240903-WA0011.jpg">
+          <img src="img/collage/IMG-20240903-WA0011.jpg.thumb.jpg" alt="Kenangan 157" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">157</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 158" data-caption="Kenangan 158" data-full="img/IMG-20240918-WA0036.jpg">
+          <img src="img/collage/IMG-20240918-WA0036.jpg.thumb.jpg" alt="Kenangan 158" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">158</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 159" data-caption="Kenangan 159" data-full="img/IMG-20241102-WA0010.jpg">
+          <img src="img/collage/IMG-20241102-WA0010.jpg.thumb.jpg" alt="Kenangan 159" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">159</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 160" data-caption="Kenangan 160" data-full="img/IMG-20241102-WA0015.jpg">
+          <img src="img/collage/IMG-20241102-WA0015.jpg.thumb.jpg" alt="Kenangan 160" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">160</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 161" data-caption="Kenangan 161" data-full="img/IMG-20241130-WA0021.jpg">
+          <img src="img/collage/IMG-20241130-WA0021.jpg.thumb.jpg" alt="Kenangan 161" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">161</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 162" data-caption="Kenangan 162" data-full="img/IMG-20241130-WA0034.jpg">
+          <img src="img/collage/IMG-20241130-WA0034.jpg.thumb.jpg" alt="Kenangan 162" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">162</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 163" data-caption="Kenangan 163" data-full="img/IMG-20241226-WA0045.jpg">
+          <img src="img/collage/IMG-20241226-WA0045.jpg.thumb.jpg" alt="Kenangan 163" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">163</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 164" data-caption="Kenangan 164" data-full="img/IMG-20241231-WA0006.jpg">
+          <img src="img/collage/IMG-20241231-WA0006.jpg.thumb.jpg" alt="Kenangan 164" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">164</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 165" data-caption="Kenangan 165" data-full="img/IMG-20250122-WA0011.jpg">
+          <img src="img/collage/IMG-20250122-WA0011.jpg.thumb.jpg" alt="Kenangan 165" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">165</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 166" data-caption="Kenangan 166" data-full="img/IMG-20250203-WA0007.jpg">
+          <img src="img/collage/IMG-20250203-WA0007.jpg.thumb.jpg" alt="Kenangan 166" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">166</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 167" data-caption="Kenangan 167" data-full="img/IMG-20250224-WA0006.jpg">
+          <img src="img/collage/IMG-20250224-WA0006.jpg.thumb.jpg" alt="Kenangan 167" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">167</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 168" data-caption="Kenangan 168" data-full="img/IMG-20250304-WA0033.jpg">
+          <img src="img/collage/IMG-20250304-WA0033.jpg.thumb.jpg" alt="Kenangan 168" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">168</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 169" data-caption="Kenangan 169" data-full="img/IMG-20250328-WA0034.jpg">
+          <img src="img/collage/IMG-20250328-WA0034.jpg.thumb.jpg" alt="Kenangan 169" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">169</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 170" data-caption="Kenangan 170" data-full="img/IMG-20250430-WA0012.jpg">
+          <img src="img/collage/IMG-20250430-WA0012.jpg.thumb.jpg" alt="Kenangan 170" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">170</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 171" data-caption="Kenangan 171" data-full="img/IMG-20250430-WA0094.jpg">
+          <img src="img/collage/IMG-20250430-WA0094.jpg.thumb.jpg" alt="Kenangan 171" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">171</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 172" data-caption="Kenangan 172" data-full="img/IMG-20250430-WA0122.jpg">
+          <img src="img/collage/IMG-20250430-WA0122.jpg.thumb.jpg" alt="Kenangan 172" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">172</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 173" data-caption="Kenangan 173" data-full="img/IMG-20250430-WA0141.jpg">
+          <img src="img/collage/IMG-20250430-WA0141.jpg.thumb.jpg" alt="Kenangan 173" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">173</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 174" data-caption="Kenangan 174" data-full="img/IMG-20250504-WA0033.jpg">
+          <img src="img/collage/IMG-20250504-WA0033.jpg.thumb.jpg" alt="Kenangan 174" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">174</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 175" data-caption="Kenangan 175" data-full="img/IMG-20250504-WA0034.jpg">
+          <img src="img/collage/IMG-20250504-WA0034.jpg.thumb.jpg" alt="Kenangan 175" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">175</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 176" data-caption="Kenangan 176" data-full="img/IMG-20250509-WA0038.jpg">
+          <img src="img/collage/IMG-20250509-WA0038.jpg.thumb.jpg" alt="Kenangan 176" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">176</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 177" data-caption="Kenangan 177" data-full="img/IMG-20250512-WA0087.jpg">
+          <img src="img/collage/IMG-20250512-WA0087.jpg.thumb.jpg" alt="Kenangan 177" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">177</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 178" data-caption="Kenangan 178" data-full="img/IMG-20250601-WA0002.jpg">
+          <img src="img/collage/IMG-20250601-WA0002.jpg.thumb.jpg" alt="Kenangan 178" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">178</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 179" data-caption="Kenangan 179" data-full="img/IMG-20250620-WA0017.jpg">
+          <img src="img/collage/IMG-20250620-WA0017.jpg.thumb.jpg" alt="Kenangan 179" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">179</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 180" data-caption="Kenangan 180" data-full="img/IMG-20250702-WA0001.jpg">
+          <img src="img/collage/IMG-20250702-WA0001.jpg.thumb.jpg" alt="Kenangan 180" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">180</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 181" data-caption="Kenangan 181" data-full="img/IMG-20250727-WA0008.jpg">
+          <img src="img/collage/IMG-20250727-WA0008.jpg.thumb.jpg" alt="Kenangan 181" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">181</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 182" data-caption="Kenangan 182" data-full="img/IMG-20250728-WA0038.jpeg">
+          <img src="img/collage/IMG-20250728-WA0038.jpeg.thumb.jpg" alt="Kenangan 182" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">182</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 183" data-caption="Kenangan 183" data-full="img/IMG-20250810-WA0056.jpg">
+          <img src="img/collage/IMG-20250810-WA0056.jpg.thumb.jpg" alt="Kenangan 183" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">183</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 184" data-caption="Kenangan 184" data-full="img/IMG-20250819-WA0123.jpg">
+          <img src="img/collage/IMG-20250819-WA0123.jpg.thumb.jpg" alt="Kenangan 184" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">184</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 185" data-caption="Kenangan 185" data-full="img/IMG-20250827-WA0059.jpg">
+          <img src="img/collage/IMG-20250827-WA0059.jpg.thumb.jpg" alt="Kenangan 185" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">185</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 186" data-caption="Kenangan 186" data-full="img/IMG-20250827-WA0065.jpg">
+          <img src="img/collage/IMG-20250827-WA0065.jpg.thumb.jpg" alt="Kenangan 186" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">186</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 187" data-caption="Kenangan 187" data-full="img/IMG-20260823-WA0031.jpeg">
+          <img src="img/collage/IMG-20260823-WA0031.jpeg.thumb.jpg" alt="Kenangan 187" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">187</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 188" data-caption="Kenangan 188" data-full="img/IMG-20260828-WA0021.jpeg">
+          <img src="img/collage/IMG-20260828-WA0021.jpeg.thumb.jpg" alt="Kenangan 188" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">188</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 189" data-caption="Kenangan 189" data-full="img/IMG-20260929-WA0044.jpeg">
+          <img src="img/collage/IMG-20260929-WA0044.jpeg.thumb.jpg" alt="Kenangan 189" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">189</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 190" data-caption="Kenangan 190" data-full="img/IMG-20261022-WA0020.jpg">
+          <img src="img/collage/IMG-20261022-WA0020.jpg.thumb.jpg" alt="Kenangan 190" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">190</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 191" data-caption="Kenangan 191" data-full="img/PXL_20250426_155706740.jpg">
+          <img src="img/collage/PXL_20250426_155706740.jpg.thumb.jpg" alt="Kenangan 191" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">191</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 192" data-caption="Kenangan 192" data-full="img/PXL_20250726_134221908.jpg">
+          <img src="img/collage/PXL_20250726_134221908.jpg.thumb.jpg" alt="Kenangan 192" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">192</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 193" data-caption="Kenangan 193" data-full="img/PXL_20250728_182400473.jpg">
+          <img src="img/collage/PXL_20250728_182400473.jpg.thumb.jpg" alt="Kenangan 193" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">193</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 194" data-caption="Kenangan 194" data-full="img/Screenshot_20211215_170651.jpg">
+          <img src="img/collage/Screenshot_20211215_170651.jpg.thumb.jpg" alt="Kenangan 194" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">194</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 195" data-caption="Kenangan 195" data-full="img/Screenshot_20220116_084215.jpg">
+          <img src="img/collage/Screenshot_20220116_084215.jpg.thumb.jpg" alt="Kenangan 195" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">195</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 196" data-caption="Kenangan 196" data-full="img/Screenshot_20220117_144609.jpg">
+          <img src="img/collage/Screenshot_20220117_144609.jpg.thumb.jpg" alt="Kenangan 196" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">196</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 197" data-caption="Kenangan 197" data-full="img/Screenshot_20220117_144623.jpg">
+          <img src="img/collage/Screenshot_20220117_144623.jpg.thumb.jpg" alt="Kenangan 197" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">197</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 198" data-caption="Kenangan 198" data-full="img/Screenshot_20220219_162006.jpg">
+          <img src="img/collage/Screenshot_20220219_162006.jpg.thumb.jpg" alt="Kenangan 198" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">198</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 199" data-caption="Kenangan 199" data-full="img/Screenshot_20220404_063348.jpg">
+          <img src="img/collage/Screenshot_20220404_063348.jpg.thumb.jpg" alt="Kenangan 199" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">199</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 200" data-caption="Kenangan 200" data-full="img/Screenshot_20220514_233813.jpg">
+          <img src="img/collage/Screenshot_20220514_233813.jpg.thumb.jpg" alt="Kenangan 200" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">200</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 201" data-caption="Kenangan 201" data-full="img/Screenshot_20220703_105552.jpg">
+          <img src="img/collage/Screenshot_20220703_105552.jpg.thumb.jpg" alt="Kenangan 201" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">201</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 202" data-caption="Kenangan 202" data-full="img/Screenshot_20231101_163051.jpg">
+          <img src="img/collage/Screenshot_20231101_163051.jpg.thumb.jpg" alt="Kenangan 202" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">202</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 203" data-caption="Kenangan 203" data-full="img/Screenshot_20231106_175909.jpg">
+          <img src="img/collage/Screenshot_20231106_175909.jpg.thumb.jpg" alt="Kenangan 203" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">203</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 204" data-caption="Kenangan 204" data-full="img/Screenshot_20240219_230039.jpg">
+          <img src="img/collage/Screenshot_20240219_230039.jpg.thumb.jpg" alt="Kenangan 204" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">204</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 205" data-caption="Kenangan 205" data-full="img/Screenshot_20241101_230622.jpg">
+          <img src="img/collage/Screenshot_20241101_230622.jpg.thumb.jpg" alt="Kenangan 205" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">205</span>
+        </button>
+        <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 206" data-caption="Kenangan 206" data-full="img/Screenshot_20260820_111502.jpg">
+          <img src="img/collage/Screenshot_20260820_111502.jpg.thumb.jpg" alt="Kenangan 206" class="polaroid-img" loading="lazy" decoding="async">
+          <span class="memory-index" aria-hidden="true">206</span>
+        </button>
+      </div>
+      <div class="photo-note"><small>Sentuh foto mana saja untuk melihatnya lebih besar ✨</small></div>
+    </section>
+    <!-- REASONS WHY YOU ARE SPECIAL -->
+    <section class="reasons-section" data-page="journey">
+      <div class="floating-ornament reasons-monsters" aria-hidden="true">
+        <img src="img%20hiasan/Monsters-University-PNG-Pic.png" alt="">
+      </div>
+      <div class="floating-ornament reasons-timmy" aria-hidden="true">
+        <img src="img%20hiasan/timmy.webp" alt="">
+      </div>
+      <div class="section-badge">Alasan Spesial 🤍</div>
+      <h2 class="section-title">Hal yang Aku Sukai Dari Kamu</h2>
+      <p class="section-desc">Empat hal kecil yang membuatmu begitu istimewa.</p>
+
+      <div class="reasons-grid">
+        <div class="reason-card">
+          <div class="reason-icon">🌟</div>
+          <h3 class="reason-title">Ketulusan Hatimu</h3>
+          <p class="reason-text">Kamu selalu bersikap apa adanya, nggak pernah dibuat-buat, dan selalu memperlakukan orang lain dengan sopan.</p>
+        </div>
+
+        <div class="reason-card">
+          <div class="reason-icon">🎧</div>
+          <h3 class="reason-title">Selalu Jadi Pendengar Baik</h3>
+          <p class="reason-text">Di saat duniaku lagi berisik atau lelah, kamu selalu jadi tempat paling tenang untuk pulang dan cerita.</p>
+        </div>
+
+        <div class="reason-card">
+          <div class="reason-icon">&#128140;</div>
+          <h3 class="reason-title">Perhatian Kecilmu</h3>
+          <p class="reason-text">Hal-hal kecil yang kamu ingat dan lakukan sering membuatku merasa diperhatikan dan disayang.</p>
+        </div>
+
+        <div class="reason-card">
+          <div class="reason-icon">&#129782;</div>
+          <h3 class="reason-title">Nyamannya Bersamamu</h3>
+          <p class="reason-text">Bersamamu, hal sederhana pun terasa lebih menyenangkan dan selalu punya cerita untuk dikenang.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSING & INTERACTIVE ACTION -->
+    <section class="closing-section" data-page="letter">
+      <div class="floating-ornament closing-cawmario" aria-hidden="true">
+        <img src="img%20hiasan/cawmario.png" alt="">
+      </div>
+      <div class="floating-ornament closing-angela" aria-hidden="true">
+        <img src="img%20hiasan/my%20angela.png" alt="">
+      </div>
+      <div class="closing-card">
+        <div class="closing-heart">💖</div>
+        <h2 class="closing-title">Sekali Lagi, Selamat Ulang Tahun!</h2>
+        <p class="closing-desc">
+          Semoga tahun ini membawa banyak rezeki, kesehatan, kebahagiaan, dan ketenangan hati. I'm so lucky to have you in my life.
+        </p>
+
+        <div class="action-buttons-group">
+          <button class="btn-action btn-hug" id="btn-hug" type="button" onclick="return window.sendVirtualHugFallback()">
+            <span class="btn-emoji">🤗</span>
+            <span>Kirim Peluk Virtual</span>
+          </button>
+          
+          <a href="https://wa.me/6281349222265?text=Makasih%20banyak%20ya%20buat%20kejutan%20websitenya%2C%20aku%20suka%20banget%21%20Manis%20banget%20%F0%9F%A4%8D%F0%9F%8E%82" class="btn-action btn-wa" id="btn-whatsapp" target="_blank" rel="noopener noreferrer">
+            <span class="btn-emoji">💬</span>
+            <span>Balas ke WhatsApp</span>
+          </a>
+        </div>
+
+        <div class="hug-counter" id="hug-counter-area">
+          <span id="hug-text">Total peluk virtual terkirim: </span>
+          <strong id="hug-count">0</strong> 💕
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" data-page="letter">
+      <p>Made with love & dedication 🤍</p>
+      <small>Dibuat untuk momen spesial ulang tahunmu</small>
+    </footer>
+
+  </main>
+
+  <!-- LIGHTBOX MODAL FOR POLAROID PREVIEW -->
+  <div class="lightbox-modal" id="lightbox-modal">
+    <div class="lightbox-backdrop" id="lightbox-backdrop"></div>
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightbox-close" aria-label="Tutup">&times;</button>
+      <img src="" alt="Full preview" id="lightbox-img">
+      <p id="lightbox-caption"></p>
+    </div>
+  </div>
+
+  <!-- BACKGROUND AUDIO ELEMENT -->
+  <audio id="bg-audio" loop preload="auto">
+    <source src="audio/Lana%20Del%20Rey%20-%20A%26W%20(Official%20Instrumental).mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- FLOATING MUSIC CONTROLLER -->
+  <button class="music-floating-btn" id="music-floating-btn" type="button" aria-label="Kontrol musik latar" title="Putar / Jeda Musik Latar">
+    <div class="music-disc-icon" aria-hidden="true">
+      <span class="disc-vinyl-mini"></span>
+      <span class="disc-note">🎵</span>
+    </div>
+    <span class="music-floating-text" id="music-floating-text">Musik Latar</span>
+    <div class="music-bars" aria-hidden="true">
+      <span></span><span></span><span></span><span></span>
+    </div>
+  </button>
+
+  <!-- POPUP PERAYAAN SETELAH ANIMASI 20 ("ANIMASI YEYY") -->
+  <div class="birthday-popup-overlay hidden" id="birthday-popup" role="dialog" aria-modal="true" aria-labelledby="popup-title">
+    <div class="birthday-popup-backdrop" id="birthday-popup-backdrop"></div>
+    <div class="birthday-popup-card wish-style-popup">
+      <div class="wish-number popup-bignum" aria-hidden="true">20</div>
+      <div class="wish-icon popup-bigicon" aria-hidden="true">🎉</div>
+      <h2 class="popup-title" id="popup-title">IIIIIIIIIIIIII SUDAHHHHHHH PALAAA 2, HAPPY BIRTHDAYY BEBSKUYY</h2>
+      <p class="popup-desc">Yeay! Selamat memasuki usia kepala dua, Bebskuy! Semoga tahun ini penuh dengan cinta, tawa, dan semua impian manismu terwujud satu per satu 🤍✨</p>
+        <button class="popup-close-btn" id="popup-close-btn" type="button" onclick="return window.closeBirthdayPopupFallback()">
+        <span>Buka Semua Kejutan 🎁</span>
+      </button>
+    </div>
+  </div>
+  <script src="script.js?v=14"></script>
+  <script>
+    window.birthdayCoverReady = window.birthdayCoverReady || false;
+    window.pageNavigationReady = window.pageNavigationReady || false;
+    window.birthdayCandleReady = window.birthdayCandleReady || false;
+    window.hugActionReady = window.hugActionReady || false;
+    window.sendVirtualHugFallback = function () {
+      if (window.hugActionReady) return true;
+      const count = document.getElementById("hug-count");
+      const button = document.getElementById("btn-hug");
+      if (!count) return false;
+      count.textContent = String((Number.parseInt(count.textContent, 10) || 0) + 1);
+      if (typeof window.triggerConfetti === "function") window.triggerConfetti(40);
+      if (button) {
+        button.style.transform = "scale(1.06)";
+        setTimeout(function () { button.style.transform = ""; }, 300);
+      }
+      return false;
+    };
+    window.blowBirthdayCandleFallback = function () {
+      if (window.birthdayCandleReady || window.birthdayCandleBlown) return true;
+      window.birthdayCandleBlown = true;
+      const flame = document.getElementById("candle-flame");
+      const smoke = document.getElementById("candle-smoke");
+      const button = document.getElementById("btn-blow-candle");
+      const buttonText = document.getElementById("blow-btn-text");
+      if (flame) flame.classList.add("blown-out");
+      if (smoke) {
+        smoke.classList.remove("hidden");
+        smoke.classList.add("smoke-active");
+      }
+      if (buttonText) buttonText.textContent = "Lilin Telah Ditiup";
+      if (button) {
+        button.disabled = true;
+        button.style.pointerEvents = "none";
+        button.style.opacity = "0.7";
+      }
+      setTimeout(function () {
+        const age = document.getElementById("cake-age");
+        const reveal = document.getElementById("wish-reveal-box");
+        if (age) age.classList.remove("hidden");
+        if (reveal) reveal.classList.remove("hidden");
+      }, 560);
+      return false;
+    };
+    window.showerBirthdayTwentyFallback = function (count) {
+      if (typeof window.showerTwentyNumbers === "function") {
+        window.showerTwentyNumbers(count || 48);
+        return;
+      }
+      const layer = document.createElement("div");
+      layer.className = "twenty-shower";
+      layer.setAttribute("aria-hidden", "true");
+      for (let index = 0; index < (count || 48); index += 1) {
+        const number = document.createElement("span");
+        number.className = "twenty-number";
+        number.textContent = "20";
+        number.style.left = Math.random() * 100 + "%";
+        number.style.setProperty("--twenty-size", 22 + Math.random() * 46 + "px");
+        number.style.setProperty("--twenty-drift", Math.round((Math.random() - 0.5) * 180) + "px");
+        number.style.setProperty("--twenty-angle", Math.round((Math.random() - 0.5) * 55) + "deg");
+        number.style.setProperty("--twenty-duration", 2.6 + Math.random() * 1.6 + "s");
+        number.style.setProperty("--twenty-delay", Math.random() * 0.55 + "s");
+        layer.appendChild(number);
+      }
+      document.body.appendChild(layer);
+      setTimeout(function () { layer.remove(); }, 4800);
+    };
+    window.submitBirthdayAgeFallback = function (event, form) {
+      if (window.birthdayCoverReady) return true;
+      event.preventDefault();
+      const input = document.getElementById("age-answer");
+      const feedback = document.getElementById("age-feedback");
+      const accepted = ["20", "20 tahun", "20 thn", "dua puluh"].includes(input.value.trim().toLowerCase());
+      if (!accepted) {
+        feedback.textContent = "Belum tepat, coba lagi ya. Kejutan tetap terkunci!";
+        input.setAttribute("aria-invalid", "true");
+        form.classList.remove("age-shake");
+        void form.offsetWidth;
+        form.classList.add("age-shake");
+        input.focus();
+        input.select();
+        return false;
+      }
+      input.disabled = true;
+      form.querySelector("button[type='submit']").disabled = true;
+      feedback.textContent = "Benar! Selamat ulang tahun ke-20, Bebskuy! 🎉";
+      document.getElementById("gift-box-trigger").classList.add("opened");
+      if (typeof window.playBackgroundMusic === "function") window.playBackgroundMusic();
+      if (typeof window.triggerConfetti === "function") window.triggerConfetti(220);
+      window.showerBirthdayTwentyFallback(48);
+      setTimeout(function () {
+        const popup = document.getElementById("birthday-popup");
+        popup.classList.remove("hidden");
+        popup.classList.add("popup-active");
+      }, 5000);
+      return false;
+    };
+    window.closeBirthdayPopupFallback = function () {
+      if (window.birthdayPopupReady) return true;
+      document.getElementById("birthday-popup").classList.add("hidden");
+      const cover = document.getElementById("cover-overlay");
+      cover.classList.add("fade-out");
+      setTimeout(function () { cover.remove(); }, 900);
+      return false;
+    };
+    if (!window.pageNavigationReady) {
+      document.body.dataset.activePage = "home";
+      document.querySelectorAll("[data-page]").forEach(function (section) {
+        section.classList.toggle("page-hidden", !section.dataset.page.split(/\s+/).includes("home"));
+      });
+    }
+    document.addEventListener("click", function (event) {
+      if (window.pageNavigationReady) return;
+      const button = event.target.closest && event.target.closest("[data-go-page]");
+      if (!button) return;
+      const pageName = button.dataset.goPage;
+      document.querySelectorAll("[data-page]").forEach(function (section) {
+        const active = section.dataset.page.split(/\s+/).includes(pageName);
+        section.classList.toggle("page-hidden", !active);
+      });
+      const backButton = document.getElementById("back-to-menu");
+      if (backButton) backButton.classList.toggle("hidden", pageName === "home");
+      document.body.dataset.activePage = pageName;
+      const memoryTrack = document.getElementById("memory-film-track");
+      if (memoryTrack) memoryTrack.classList.toggle("is-rolling", pageName === "journey");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  </script>
+</body>
+</html>
