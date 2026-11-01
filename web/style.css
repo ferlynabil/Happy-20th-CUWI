@@ -4489,6 +4489,54 @@ body[data-active-page="home"] .memory-soundtrack { display: none; }
   }
 }
 
+/* Show the five new PNG decorations as a compact, responsive row above the surprise choices. */
+.surprise-menu-decorations {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: clamp(8px, 1.5vw, 16px);
+  margin: 0 auto 22px;
+  pointer-events: none;
+}
+
+.surprise-menu-decorations img {
+  display: block;
+  width: clamp(50px, 7vw, 76px);
+  height: clamp(62px, 9vw, 96px);
+  padding: 4px;
+  border: 1px solid rgba(255, 230, 250, 0.5);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 8px 20px rgba(20, 0, 24, 0.25);
+  object-fit: contain;
+  animation: extraDecorationBob 4.2s ease-in-out infinite;
+}
+
+.surprise-menu-decorations img:nth-child(2) { animation-delay: -0.7s; }
+.surprise-menu-decorations img:nth-child(3) { animation-delay: -1.4s; }
+.surprise-menu-decorations img:nth-child(4) { animation-delay: -2.1s; }
+.surprise-menu-decorations img:nth-child(5) { animation-delay: -2.8s; }
+
+@keyframes extraDecorationBob {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-5px) rotate(2deg); }
+}
+
+@media (max-width: 600px) {
+  .surprise-menu-decorations {
+    gap: 7px;
+    margin-bottom: 18px;
+  }
+
+  .surprise-menu-decorations img {
+    width: clamp(40px, 13vw, 52px);
+    height: clamp(50px, 16vw, 64px);
+    padding: 3px;
+    border-radius: 12px;
+  }
+}
+
 /* Keep the landing gate and music controls usable in mobile browser viewports. */
 .cover-overlay {
   height: 100vh;
