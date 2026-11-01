@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="style.css?v=21">
+  <link rel="stylesheet" href="style.css?v=22">
 </head>
 <body>
   <!-- Canvas Confetti & Sparkles -->
@@ -177,6 +177,13 @@
           <span class="surprise-label">Open Your Letter</span>
           <span class="surprise-hint">ada pesan buat kamu</span>
         </button>
+      </div>
+      <div class="background-audio-panel">
+        <span class="background-audio-title">Musik Latar A&amp;W (MP3)</span>
+        <audio class="background-audio-controls" id="bg-audio" controls loop preload="metadata" aria-label="Putar musik latar A&W">
+          <source src="audio/birthday-background.mp3?v=3" type="audio/mpeg">
+          Audio tidak didukung browser ini.
+        </audio>
       </div>
     </section>
 
@@ -1265,11 +1272,6 @@
     </div>
   </div>
 
-  <!-- A&W MP3 MUSIC BACKGROUND -->
-  <audio id="bg-audio" loop preload="none">
-    <source src="audio/birthday-background.mp3?v=2" type="audio/mpeg">
-  </audio>
-
   <!-- FLOATING MUSIC CONTROLLER -->
   <button class="music-floating-btn" id="music-floating-btn" type="button" aria-label="Putar musik latar A&amp;W" aria-pressed="false" title="Putar / Jeda Musik Latar A&amp;W">
     <div class="music-disc-icon" aria-hidden="true">
@@ -1295,7 +1297,7 @@
       </button>
     </div>
   </div>
-  <script src="script.js?v=21"></script>
+  <script src="script.js?v=22"></script>
   <script>
     window.birthdayCoverReady = window.birthdayCoverReady || false;
     window.pageNavigationReady = window.pageNavigationReady || false;

@@ -4308,6 +4308,31 @@ body[data-active-page="journey"] .main-wrapper { max-width: 1240px; }
   font-weight: 700;
 }
 
+.background-audio-panel {
+  display: grid;
+  gap: 9px;
+  width: min(100%, 440px);
+  margin: 22px auto 0;
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 220, 248, 0.36);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.09);
+  text-align: left;
+}
+
+.background-audio-title {
+  color: #ffe8f8;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.background-audio-controls {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  accent-color: #e94fbb;
+}
+
 body[data-active-page="home"] .memory-soundtrack { display: none; }
 
 .memory-music-toggle {

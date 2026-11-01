@@ -265,7 +265,7 @@ function initBackgroundMusic() {
   const startOnGesture = (event) => {
     const target = event.target;
     if (document.body.dataset.activePage === "journey") return;
-    if (target && target.closest && target.closest('[data-go-page="journey"], #memory-music-toggle, #memory-soundtrack-audio, .youtube-frame, .youtube-link, #music-floating-btn, #player-play-btn')) return;
+    if (target && target.closest && target.closest('[data-go-page="journey"], #memory-music-toggle, #memory-soundtrack-audio, #bg-audio, .youtube-frame, .youtube-link, #music-floating-btn, #player-play-btn')) return;
 
     if (!bgMusicStarted && audio.paused) {
       playAudio();
