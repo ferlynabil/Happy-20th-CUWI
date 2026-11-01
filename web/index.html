@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="style.css?v=17">
+  <link rel="stylesheet" href="style.css?v=18">
 </head>
 <body>
   <!-- Canvas Confetti & Sparkles -->
@@ -302,10 +302,10 @@
       </div>
       <div class="section-badge">Pesan Spesial 💌</div>
       <h2 class="section-title">Sepucuk Surat Buat Kamu</h2>
-      <p class="section-desc">Klik amplop di bawah ini untuk membaca suratnya.</p>
+      <p class="section-desc">Ketuk amplop atau tombol Buka Surat untuk membaca pesannya.</p>
 
       <div class="envelope-wrapper" id="envelope-wrapper">
-        <div class="envelope" id="envelope" role="button" tabindex="0" aria-expanded="false" aria-controls="letter-sheet" aria-label="Buka surat">
+        <div class="envelope" id="envelope" role="button" tabindex="0" aria-expanded="false" aria-controls="letter-sheet" aria-label="Buka surat" onclick="return window.openBirthdayLetterFallback()">
           <div class="envelope-front">
             <div class="envelope-flap" id="envelope-flap"></div>
             <div class="envelope-pocket"></div>
@@ -315,6 +315,7 @@
           </div>
         </div>
       </div>
+      <button class="letter-open-button" id="letter-open-button" type="button" aria-controls="letter-sheet" aria-expanded="false" onclick="return window.openBirthdayLetterFallback()">💌 Buka Surat</button>
 
       <div class="letter-sheet" id="letter-sheet">
           <div class="letter-header">
@@ -1324,7 +1325,7 @@
       </button>
     </div>
   </div>
-  <script src="script.js?v=16"></script>
+  <script src="script.js?v=17"></script>
   <script>
     window.birthdayCoverReady = window.birthdayCoverReady || false;
     window.pageNavigationReady = window.pageNavigationReady || false;
@@ -1428,6 +1429,21 @@
       const cover = document.getElementById("cover-overlay");
       cover.classList.add("fade-out");
       setTimeout(function () { cover.remove(); }, 900);
+      return false;
+    };
+    window.openBirthdayLetterFallback = function () {
+      const envelope = document.getElementById("envelope");
+      const letterSheet = document.getElementById("letter-sheet");
+      const openButton = document.getElementById("letter-open-button");
+      if (!envelope || !letterSheet) return false;
+      envelope.classList.add("open");
+      envelope.setAttribute("aria-expanded", "true");
+      envelope.setAttribute("aria-label", "Surat terbuka");
+      letterSheet.classList.add("active");
+      if (openButton) openButton.setAttribute("aria-expanded", "true");
+      requestAnimationFrame(function () {
+        letterSheet.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
       return false;
     };
     if (!window.pageNavigationReady) {

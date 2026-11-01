@@ -595,6 +595,7 @@ function initEnvelope() {
   const flap = document.getElementById("envelope-flap");
   const waxSeal = document.getElementById("wax-seal");
   const letterSheet = document.getElementById("letter-sheet");
+  const openButton = document.getElementById("letter-open-button");
   if (!envelope || !letterSheet) return;
 
   const openLetter = () => {
@@ -603,7 +604,9 @@ function initEnvelope() {
     envelope.setAttribute("aria-expanded", "true");
     envelope.setAttribute("aria-label", "Surat terbuka");
     letterSheet.classList.add("active");
+    if (openButton) openButton.setAttribute("aria-expanded", "true");
     triggerConfetti(60);
+    requestAnimationFrame(() => letterSheet.scrollIntoView({ behavior: "smooth", block: "start" }));
   };
 
   envelope.addEventListener("click", openLetter);
@@ -615,6 +618,7 @@ function initEnvelope() {
   });
   if (flap) flap.addEventListener("click", openLetter);
   if (waxSeal) waxSeal.addEventListener("click", openLetter);
+  if (openButton) openButton.addEventListener("click", openLetter);
 }
 
 // =========================================================
