@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="style.css?v=18">
+  <link rel="stylesheet" href="style.css?v=20">
 </head>
 <body>
   <!-- Canvas Confetti & Sparkles -->
@@ -185,52 +185,16 @@
       <div class="floating-ornament music-buttercup" aria-hidden="true">
         <img src="img%20hiasan/buttercup.png" alt="">
       </div>
-      <div class="music-card audio-player-card">
+      <div class="music-card youtube-music-card">
         <div class="music-copy">
-          <div class="section-badge">Lagu untukmu 🎶</div>
-          <h2 class="section-title">Soundtrack Hari Spesialmu</h2>
-          <p class="section-desc">Tekan tombol putar pada pemutar di bawah untuk mendengarkan lagu spesial ini.</p>
+          <div class="section-badge">Lagu untukmu &#127925;</div>
+          <h2 class="section-title">Young and Beautiful</h2>
+          <p class="section-desc">Lagu spesial untukmu. Tekan tombol putar di video YouTube.</p>
         </div>
-
-        <div class="custom-audio-player">
-          <div class="player-vinyl-wrapper">
-            <div class="player-vinyl" id="player-vinyl">
-              <div class="vinyl-groove"></div>
-              <div class="vinyl-center">
-                <span>🎵</span>
-              </div>
-            </div>
-            <div class="player-track-info">
-              <span class="player-track-tag">Musik Latar Spesial</span>
-              <h3 class="player-track-title">A&amp;W (Official Instrumental)</h3>
-              <p class="player-artist">Lana Del Rey</p>
-              <span class="player-status-badge paused" id="player-status-badge">Sentuh untuk memutar</span>
-            </div>
-          </div>
-
-          <div class="player-controls">
-            <div class="player-progress-area">
-              <span class="player-time" id="player-current-time">0:00</span>
-              <div class="player-timeline" id="player-timeline" role="slider" aria-label="Progress lagu" tabindex="0">
-                <div class="player-progress-bar" id="player-progress-bar">
-                  <div class="player-progress-thumb"></div>
-                </div>
-              </div>
-              <span class="player-time" id="player-duration">--:--</span>
-            </div>
-
-            <div class="player-buttons">
-              <button class="player-play-btn" id="player-play-btn" type="button" aria-label="Putar atau Jeda Musik">
-                <span class="play-icon" id="player-play-icon">▶</span>
-                <span id="player-btn-label">Putar Musik</span>
-              </button>
-            </div>
-          </div>
-          <audio class="native-audio-controls" id="bg-audio" controls loop preload="metadata" aria-label="Putar A&W (Official Instrumental) oleh Lana Del Rey">
-            <source src="audio/birthday-background.mp3?v=2" type="audio/mpeg">
-            Browser ini tidak mendukung pemutar audio.
-          </audio>
+        <div class="youtube-frame">
+          <iframe src="https://www.youtube.com/embed/o_1aF54DO60?playsinline=1&amp;rel=0" title="Lana Del Rey - Young and Beautiful (Official Music Video)" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
+        <a class="youtube-link" href="https://www.youtube.com/watch?v=o_1aF54DO60" target="_blank" rel="noopener noreferrer">Buka Young and Beautiful di YouTube &#8599;</a>
       </div>
     </section>
     <!-- INTERACTIVE CAKE & CANDLE SECTION -->
@@ -368,17 +332,17 @@
       <h2 class="section-title">Kenangan kamu sebelum menyentuh kepala 2</h2>
       <p class="section-desc">Setiap foto menyimpan cerita kecil tentang perjalanan kita.</p>
       <div class="memory-soundtrack">
-        <audio id="memory-soundtrack-audio" loop preload="none">
-          <source src="audio/memories-soundtrack.mp3?v=2" type="audio/mpeg">
-        </audio>
-        <button class="memory-music-toggle" id="memory-music-toggle" type="button" aria-label="Putar Terbuang Dalam Waktu oleh Barasuara" aria-pressed="false">
+        <div class="memory-music-panel">
           <span class="memory-music-icon" aria-hidden="true">&#9835;</span>
           <span class="memory-music-copy">
             <span class="memory-track-title">Terbuang Dalam Waktu</span>
             <span class="memory-track-artist">Barasuara &middot; Peaceful Piano</span>
           </span>
-          <span class="memory-music-state" id="memory-music-state" aria-hidden="true">PUTAR</span>
-        </button>
+          <audio class="memory-native-audio" id="memory-soundtrack-audio" controls loop preload="metadata" aria-label="Putar Terbuang Dalam Waktu oleh Barasuara">
+            <source src="audio/memories-soundtrack.mp3?v=3" type="audio/mpeg">
+            Audio tidak didukung browser ini.
+          </audio>
+        </div>
       </div>
       <div class="polaroid-grid" id="polaroid-grid" aria-label="Kolase foto kenangan">
         <button class="polaroid-card collage-tile" type="button" aria-label="Buka foto Kenangan 01" data-caption="Kenangan 01" data-full="img/20260609_190133_RYmPRk.jpg">
@@ -1300,13 +1264,18 @@
     </div>
   </div>
 
+  <!-- A&W MP3 MUSIC BACKGROUND -->
+  <audio id="bg-audio" loop preload="none">
+    <source src="audio/birthday-background.mp3?v=2" type="audio/mpeg">
+  </audio>
+
   <!-- FLOATING MUSIC CONTROLLER -->
-  <button class="music-floating-btn" id="music-floating-btn" type="button" aria-label="Putar musik latar" aria-pressed="false" title="Putar / Jeda Musik Latar">
+  <button class="music-floating-btn" id="music-floating-btn" type="button" aria-label="Putar musik latar A&amp;W" aria-pressed="false" title="Putar / Jeda Musik Latar A&amp;W">
     <div class="music-disc-icon" aria-hidden="true">
       <span class="disc-vinyl-mini"></span>
       <span class="disc-note">🎵</span>
     </div>
-    <span class="music-floating-text" id="music-floating-text">Putar Musik</span>
+    <span class="music-floating-text" id="music-floating-text">Putar A&amp;W</span>
     <div class="music-bars" aria-hidden="true">
       <span></span><span></span><span></span><span></span>
     </div>
@@ -1325,7 +1294,7 @@
       </button>
     </div>
   </div>
-  <script src="script.js?v=17"></script>
+  <script src="script.js?v=21"></script>
   <script>
     window.birthdayCoverReady = window.birthdayCoverReady || false;
     window.pageNavigationReady = window.pageNavigationReady || false;

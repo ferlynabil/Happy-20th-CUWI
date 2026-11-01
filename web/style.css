@@ -4276,6 +4276,30 @@ body[data-active-page="journey"] .main-wrapper { max-width: 1240px; }
   margin: 0 auto 14px;
 }
 
+.memory-music-panel {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr);
+  align-items: center;
+  gap: 10px 12px;
+  width: min(100%, 540px);
+  padding: 13px 16px;
+  border: 1px solid rgba(255, 220, 248, 0.5);
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(66, 5, 77, 0.92), rgba(129, 17, 132, 0.9));
+  box-shadow: 0 10px 26px rgba(46, 0, 56, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  text-align: left;
+}
+
+.memory-music-panel .memory-music-copy { gap: 3px; }
+.memory-music-panel .memory-track-title { white-space: normal; }
+.memory-native-audio {
+  display: block;
+  grid-column: 1 / -1;
+  width: 100%;
+  min-height: 44px;
+  accent-color: #e94fbb;
+}
+
 body[data-active-page="home"] .memory-soundtrack { display: none; }
 
 .memory-music-toggle {

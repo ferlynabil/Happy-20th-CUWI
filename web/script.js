@@ -173,9 +173,9 @@ function initBackgroundMusic() {
     if (floatingBtn) {
       floatingBtn.classList.toggle("is-playing", isPlaying);
       floatingBtn.setAttribute("aria-pressed", String(isPlaying));
-      floatingBtn.setAttribute("aria-label", isPlaying ? "Jeda musik latar" : "Putar musik latar");
+      floatingBtn.setAttribute("aria-label", isPlaying ? "Jeda musik latar A&W" : "Putar musik latar A&W");
       if (floatingText) {
-        floatingText.textContent = isPlaying ? "Lagu Aktif" : "Putar Musik";
+        floatingText.textContent = isPlaying ? "A&W Aktif" : "Putar A&W";
       }
     }
 
@@ -265,7 +265,7 @@ function initBackgroundMusic() {
   const startOnGesture = (event) => {
     const target = event.target;
     if (document.body.dataset.activePage === "journey") return;
-    if (target && target.closest && target.closest('[data-go-page="journey"], #memory-music-toggle, #music-floating-btn, #player-play-btn')) return;
+    if (target && target.closest && target.closest('[data-go-page="journey"], #memory-music-toggle, #memory-soundtrack-audio, .youtube-frame, .youtube-link, #music-floating-btn, #player-play-btn')) return;
 
     if (!bgMusicStarted && audio.paused) {
       playAudio();
@@ -279,9 +279,10 @@ function initMemorySoundtrack() {
   const audio = document.getElementById("memory-soundtrack-audio");
   const button = document.getElementById("memory-music-toggle");
   const state = document.getElementById("memory-music-state");
-  if (!audio || !button || !state) return;
+  if (!audio) return;
 
   audio.volume = 0.72;
+  if (!button || !state) return;
   const update = (isPlaying) => {
     button.classList.toggle("is-playing", isPlaying);
     button.setAttribute("aria-pressed", String(isPlaying));
@@ -466,7 +467,7 @@ function initCover() {
     ageGate.querySelector("button[type='submit']").disabled = true;
     ageFeedback.textContent = "Benar! Selamat ulang tahun ke-20, Bebskuy! 🎉";
 
-    // 1. Putar lagu latar Lana Del Rey
+    // 1. Putar MP3 A&W sebagai musik latar situs
     playBackgroundMusic();
 
     // 2. Animasi buka kado (tutup terangkat melayang)
