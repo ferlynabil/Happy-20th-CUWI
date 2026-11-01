@@ -169,9 +169,11 @@ function initBackgroundMusic() {
     return mins + ":" + (secs < 10 ? "0" : "") + secs;
   };
 
-  const updateUI = (isPlaying) => {
+  const updateUI = (isPlaying, statusMessage = "") => {
     if (floatingBtn) {
       floatingBtn.classList.toggle("is-playing", isPlaying);
+      floatingBtn.setAttribute("aria-pressed", String(isPlaying));
+      floatingBtn.setAttribute("aria-label", isPlaying ? "Jeda musik latar" : "Putar musik latar");
       if (floatingText) {
         floatingText.textContent = isPlaying ? "Lagu Aktif" : "Putar Musik";
       }
@@ -182,21 +184,42 @@ function initBackgroundMusic() {
       if (btnLabel) btnLabel.textContent = isPlaying ? "Jeda Musik" : "Putar Musik";
     }
     if (statusBadge) {
-      statusBadge.textContent = isPlaying ? "Sedang Diputar 🎧" : "Dijeda ⏸";
+      statusBadge.textContent = statusMessage || (isPlaying ? "Sedang Diputar 🎧" : "Sentuh untuk memutar");
       statusBadge.classList.toggle("paused", !isPlaying);
+      statusBadge.classList.toggle("audio-error", Boolean(audio.error));
     }
     if (vinylPlayer) {
       vinylPlayer.classList.toggle("spinning", isPlaying);
     }
   };
 
+  const playAudio = () => {
+    const playRequest = audio.play();
+    if (!playRequest || typeof playRequest.then !== "function") {
+      bgMusicStarted = true;
+      updateUI(true);
+      return;
+    }
+
+    playRequest.then(() => {
+      bgMusicStarted = true;
+      updateUI(true);
+    }).catch((error) => {
+      const failedToLoad = Boolean(audio.error);
+      updateUI(false, failedToLoad ? "File musik gagal dimuat" : "Ketuk Putar untuk mulai");
+      if (!failedToLoad && error?.name !== "NotAllowedError") {
+        console.warn("Background music could not start:", error);
+      }
+    });
+  };
+
   const togglePlay = (e) => {
-    if (e) e.stopPropagation();
+    if (e) {
+      e.stopPropagation();
+      document.removeEventListener("click", startOnGesture);
+    }
     if (audio.paused) {
-      audio.play().then(() => {
-        bgMusicStarted = true;
-        updateUI(true);
-      }).catch(() => {});
+      playAudio();
     } else {
       audio.pause();
       updateUI(false);
@@ -207,7 +230,9 @@ function initBackgroundMusic() {
   if (playBtn) playBtn.addEventListener("click", togglePlay);
 
   audio.addEventListener("play", () => updateUI(true));
-  audio.addEventListener("pause", () => updateUI(false));
+  audio.addEventListener("pause", () => updateUI(false, "Musik dijeda"));
+  audio.addEventListener("error", () => updateUI(false, "File musik gagal dimuat"));
+  audio.addEventListener("playing", () => updateUI(true));
 
   audio.addEventListener("timeupdate", () => {
     if (!audio.duration) return;
@@ -219,6 +244,8 @@ function initBackgroundMusic() {
   audio.addEventListener("loadedmetadata", () => {
     if (durationEl) durationEl.textContent = formatTime(audio.duration);
   });
+
+  updateUI(!audio.paused);
 
   if (timeline) {
     const seek = (e) => {
@@ -237,19 +264,14 @@ function initBackgroundMusic() {
   const startOnGesture = (event) => {
     const target = event.target;
     if (document.body.dataset.activePage === "journey") return;
-    if (target && target.closest && target.closest('[data-go-page="journey"], #memory-music-toggle')) return;
+    if (target && target.closest && target.closest('[data-go-page="journey"], #memory-music-toggle, #music-floating-btn, #player-play-btn')) return;
 
     if (!bgMusicStarted && audio.paused) {
-      audio.play().then(() => {
-        bgMusicStarted = true;
-        updateUI(true);
-      }).catch(() => {});
+      playAudio();
     }
     document.removeEventListener("click", startOnGesture);
-    document.removeEventListener("touchstart", startOnGesture);
   };
   document.addEventListener("click", startOnGesture);
-  document.addEventListener("touchstart", startOnGesture);
 }
 
 function initMemorySoundtrack() {
@@ -295,10 +317,20 @@ function playMemorySoundtrack() {
 function playBackgroundMusic() {
   const audio = document.getElementById("bg-audio");
   if (!audio) return;
-  audio.play().then(() => {
+  const playRequest = audio.play();
+  if (!playRequest || typeof playRequest.then !== "function") {
     bgMusicStarted = true;
-  }).catch((err) => {
-    console.log("Autoplay waiting for user gesture:", err);
+    return;
+  }
+  playRequest.then(() => {
+    bgMusicStarted = true;
+  }).catch((error) => {
+    const statusBadge = document.getElementById("player-status-badge");
+    if (statusBadge && !audio.error) statusBadge.textContent = "Ketuk Putar untuk mulai";
+    if (audio.error && statusBadge) statusBadge.textContent = "File musik gagal dimuat";
+    if (!audio.error && error?.name !== "NotAllowedError") {
+      console.warn("Background music could not start:", error);
+    }
   });
 }
 

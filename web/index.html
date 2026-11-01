@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#71004d">
   <title>Selamat Ulang Tahun, CUWII BEBSKUYY! 🎂💜</title>
   <meta name="description" content="Kejutan ulang tahun untuk CUWII BEBSKUYY, dibuat khusus dengan penuh sayang.">
@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="style.css?v=14">
+  <link rel="stylesheet" href="style.css?v=15">
 </head>
 <body>
   <!-- Canvas Confetti & Sparkles -->
@@ -182,7 +182,7 @@
         <div class="music-copy">
           <div class="section-badge">Lagu untukmu 🎶</div>
           <h2 class="section-title">Soundtrack Hari Spesialmu</h2>
-          <p class="section-desc">“A&amp;W” (Official Instrumental) — Lana Del Rey diputar sebagai musik latar kejutan ini.</p>
+          <p class="section-desc">Tekan tombol Putar Musik untuk memulai lagu spesial ini. Beberapa HP meminta sentuhan sebelum musik bisa diputar.</p>
         </div>
 
         <div class="custom-audio-player">
@@ -197,7 +197,7 @@
               <span class="player-track-tag">Musik Latar Spesial</span>
               <h3 class="player-track-title">A&amp;W (Official Instrumental)</h3>
               <p class="player-artist">Lana Del Rey</p>
-              <span class="player-status-badge" id="player-status-badge">Sedang Diputar 🎧</span>
+              <span class="player-status-badge paused" id="player-status-badge">Sentuh untuk memutar</span>
             </div>
           </div>
 
@@ -214,8 +214,8 @@
 
             <div class="player-buttons">
               <button class="player-play-btn" id="player-play-btn" type="button" aria-label="Putar atau Jeda Musik">
-                <span class="play-icon" id="player-play-icon">⏸</span>
-                <span id="player-btn-label">Jeda Musik</span>
+                <span class="play-icon" id="player-play-icon">▶</span>
+                <span id="player-btn-label">Putar Musik</span>
               </button>
             </div>
           </div>
@@ -1289,17 +1289,17 @@
   </div>
 
   <!-- BACKGROUND AUDIO ELEMENT -->
-  <audio id="bg-audio" loop preload="auto">
+  <audio id="bg-audio" loop preload="none">
     <source src="audio/Lana%20Del%20Rey%20-%20A%26W%20(Official%20Instrumental).mp3" type="audio/mpeg">
   </audio>
 
   <!-- FLOATING MUSIC CONTROLLER -->
-  <button class="music-floating-btn" id="music-floating-btn" type="button" aria-label="Kontrol musik latar" title="Putar / Jeda Musik Latar">
+  <button class="music-floating-btn" id="music-floating-btn" type="button" aria-label="Putar musik latar" aria-pressed="false" title="Putar / Jeda Musik Latar">
     <div class="music-disc-icon" aria-hidden="true">
       <span class="disc-vinyl-mini"></span>
       <span class="disc-note">🎵</span>
     </div>
-    <span class="music-floating-text" id="music-floating-text">Musik Latar</span>
+    <span class="music-floating-text" id="music-floating-text">Putar Musik</span>
     <div class="music-bars" aria-hidden="true">
       <span></span><span></span><span></span><span></span>
     </div>
@@ -1318,7 +1318,7 @@
       </button>
     </div>
   </div>
-  <script src="script.js?v=14"></script>
+  <script src="script.js?v=15"></script>
   <script>
     window.birthdayCoverReady = window.birthdayCoverReady || false;
     window.pageNavigationReady = window.pageNavigationReady || false;
