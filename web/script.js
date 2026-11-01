@@ -197,13 +197,11 @@ function initBackgroundMusic() {
     const playRequest = audio.play();
     if (!playRequest || typeof playRequest.then !== "function") {
       bgMusicStarted = true;
-      updateUI(true);
       return;
     }
 
     playRequest.then(() => {
       bgMusicStarted = true;
-      updateUI(true);
     }).catch((error) => {
       const failedToLoad = Boolean(audio.error);
       updateUI(false, failedToLoad ? "File musik gagal dimuat" : "Ketuk Putar untuk mulai");
@@ -229,10 +227,13 @@ function initBackgroundMusic() {
   if (floatingBtn) floatingBtn.addEventListener("click", togglePlay);
   if (playBtn) playBtn.addEventListener("click", togglePlay);
 
-  audio.addEventListener("play", () => updateUI(true));
+  // The `play` event means a request started, not that audio is audible yet.
+  audio.addEventListener("play", () => updateUI(false, "Memuat lagu…"));
   audio.addEventListener("pause", () => updateUI(false, "Musik dijeda"));
   audio.addEventListener("error", () => updateUI(false, "File musik gagal dimuat"));
   audio.addEventListener("playing", () => updateUI(true));
+  audio.addEventListener("waiting", () => updateUI(false, "Memuat lagu…"));
+  audio.addEventListener("stalled", () => updateUI(false, "Koneksi lagu terhenti, coba putar lagi"));
 
   audio.addEventListener("timeupdate", () => {
     if (!audio.duration) return;
@@ -593,14 +594,25 @@ function initEnvelope() {
   const envelope = document.getElementById("envelope");
   const flap = document.getElementById("envelope-flap");
   const waxSeal = document.getElementById("wax-seal");
+  const letterSheet = document.getElementById("letter-sheet");
+  if (!envelope || !letterSheet) return;
 
   const openLetter = () => {
     if (envelope.classList.contains("open")) return;
     envelope.classList.add("open");
+    envelope.setAttribute("aria-expanded", "true");
+    envelope.setAttribute("aria-label", "Surat terbuka");
+    letterSheet.classList.add("active");
     triggerConfetti(60);
   };
 
-  if (envelope) envelope.addEventListener("click", openLetter);
+  envelope.addEventListener("click", openLetter);
+  envelope.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openLetter();
+    }
+  });
   if (flap) flap.addEventListener("click", openLetter);
   if (waxSeal) waxSeal.addEventListener("click", openLetter);
 }

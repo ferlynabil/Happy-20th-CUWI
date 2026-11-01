@@ -3853,6 +3853,17 @@ body[data-active-page="journey"] .main-wrapper { max-width: 1240px; }
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 12px 30px rgba(18, 0, 16, 0.32);
 }
 
+/* Use the browser's built-in audio controls for reliable mobile playback. */
+.audio-player-card .player-controls { display: none; }
+.native-audio-controls {
+  display: block;
+  width: 100%;
+  max-width: 560px;
+  min-height: 48px;
+  margin: 0 auto;
+  accent-color: #e94fbb;
+}
+
 .player-vinyl-wrapper {
   display: flex;
   align-items: center;

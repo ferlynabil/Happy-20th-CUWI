@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="style.css?v=16">
+  <link rel="stylesheet" href="style.css?v=17">
 </head>
 <body>
   <!-- Canvas Confetti & Sparkles -->
@@ -189,7 +189,7 @@
         <div class="music-copy">
           <div class="section-badge">Lagu untukmu 🎶</div>
           <h2 class="section-title">Soundtrack Hari Spesialmu</h2>
-          <p class="section-desc">Tekan tombol Putar Musik untuk memulai lagu spesial ini. Beberapa HP meminta sentuhan sebelum musik bisa diputar.</p>
+          <p class="section-desc">Tekan tombol putar pada pemutar di bawah untuk mendengarkan lagu spesial ini.</p>
         </div>
 
         <div class="custom-audio-player">
@@ -226,6 +226,10 @@
               </button>
             </div>
           </div>
+          <audio class="native-audio-controls" id="bg-audio" controls loop preload="metadata" aria-label="Putar A&W (Official Instrumental) oleh Lana Del Rey">
+            <source src="audio/birthday-background.mp3?v=2" type="audio/mpeg">
+            Browser ini tidak mendukung pemutar audio.
+          </audio>
         </div>
       </div>
     </section>
@@ -301,7 +305,7 @@
       <p class="section-desc">Klik amplop di bawah ini untuk membaca suratnya.</p>
 
       <div class="envelope-wrapper" id="envelope-wrapper">
-        <div class="envelope" id="envelope">
+        <div class="envelope" id="envelope" role="button" tabindex="0" aria-expanded="false" aria-controls="letter-sheet" aria-label="Buka surat">
           <div class="envelope-front">
             <div class="envelope-flap" id="envelope-flap"></div>
             <div class="envelope-pocket"></div>
@@ -364,7 +368,7 @@
       <p class="section-desc">Setiap foto menyimpan cerita kecil tentang perjalanan kita.</p>
       <div class="memory-soundtrack">
         <audio id="memory-soundtrack-audio" loop preload="none">
-          <source src="audio/memories-soundtrack.mp3" type="audio/mpeg">
+          <source src="audio/memories-soundtrack.mp3?v=2" type="audio/mpeg">
         </audio>
         <button class="memory-music-toggle" id="memory-music-toggle" type="button" aria-label="Putar Terbuang Dalam Waktu oleh Barasuara" aria-pressed="false">
           <span class="memory-music-icon" aria-hidden="true">&#9835;</span>
@@ -1295,11 +1299,6 @@
     </div>
   </div>
 
-  <!-- BACKGROUND AUDIO ELEMENT -->
-  <audio id="bg-audio" loop preload="none">
-    <source src="audio/birthday-background.mp3" type="audio/mpeg">
-  </audio>
-
   <!-- FLOATING MUSIC CONTROLLER -->
   <button class="music-floating-btn" id="music-floating-btn" type="button" aria-label="Putar musik latar" aria-pressed="false" title="Putar / Jeda Musik Latar">
     <div class="music-disc-icon" aria-hidden="true">
@@ -1325,7 +1324,7 @@
       </button>
     </div>
   </div>
-  <script src="script.js?v=15"></script>
+  <script src="script.js?v=16"></script>
   <script>
     window.birthdayCoverReady = window.birthdayCoverReady || false;
     window.pageNavigationReady = window.pageNavigationReady || false;
