@@ -4300,6 +4300,14 @@ body[data-active-page="journey"] .main-wrapper { max-width: 1240px; }
   accent-color: #e94fbb;
 }
 
+.song-dedication {
+  margin: 10px 0 0;
+  color: #ffd0f0;
+  font-family: var(--font-hand, cursive);
+  font-size: clamp(19px, 2.5vw, 25px);
+  font-weight: 700;
+}
+
 body[data-active-page="home"] .memory-soundtrack { display: none; }
 
 .memory-music-toggle {
